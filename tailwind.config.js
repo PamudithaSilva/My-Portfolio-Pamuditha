@@ -16,6 +16,7 @@ export default {
       animation: {
         'gradient-move': 'gradientMove 8s ease infinite',
         float: 'float 6s ease-in-out infinite',
+        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
       },
       keyframes: {
         gradientMove: {
@@ -25,6 +26,10 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-14px)' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '0.55', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.07)' },
         },
       },
     },
