@@ -29,8 +29,8 @@ export default function About() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <p className="text-accent2 font-semibold mb-2 tracking-widest text-sm uppercase">About Me</p>
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">
+        <p className="eyebrow">About me</p>
+        <h2 className="section-title mb-8">
           Turning ideas into <span className="gradient-text">reliable software</span>
         </h2>
         <p className="text-slate-400 max-w-3xl leading-relaxed mb-14">{profile.about}</p>
@@ -44,7 +44,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="glass p-6 hover:border-accent/40 transition-colors"
+            className="glass p-6 hover:-translate-y-1 hover:border-accent/40 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-xl mb-4">
               {h.icon}

@@ -10,8 +10,11 @@ import Footer from './components/Footer'
 function App() {
   return (
     <div className="relative">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[60] btn-primary">
+        Skip to content
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Skills />
