@@ -11,8 +11,8 @@ export default function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <p className="text-accent2 font-semibold mb-2 tracking-widest text-sm uppercase">Portfolio</p>
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">
+        <p className="eyebrow">Portfolio</p>
+        <h2 className="section-title mb-12">
           Featured <span className="gradient-text">Projects</span>
         </h2>
       </motion.div>
@@ -50,6 +50,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-sm text-accent2 hover:text-white transition-colors mt-3"
+                    aria-label={`${l.label}: ${p.title}`}
                   >
                     {l.label.toLowerCase().includes('github') ? <FiGithub /> : <FiExternalLink />}
                     {l.label}
