@@ -15,8 +15,8 @@ export default function Contact() {
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-accent2/20 rounded-full blur-3xl" />
 
-        <p className="text-accent2 font-semibold mb-2 tracking-widest text-sm uppercase relative z-10">Contact</p>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 relative z-10">
+        <p className="eyebrow relative z-10">Contact</p>
+        <h2 className="section-title mb-4 relative z-10">
           Let's build something <span className="gradient-text">great together</span>
         </h2>
         <p className="text-slate-400 max-w-xl mx-auto mb-10 relative z-10">
@@ -37,10 +37,10 @@ export default function Contact() {
         </div>
 
         <div className="flex items-center justify-center gap-6 text-2xl relative z-10">
-          <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-accent2 transition-colors">
+          <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-accent2 transition-colors" aria-label="Visit Pamuditha's GitHub profile">
             <FiGithub />
           </a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-accent2 transition-colors">
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-accent2 transition-colors" aria-label="Visit Pamuditha's LinkedIn profile">
             <FiLinkedin />
           </a>
         </div>
