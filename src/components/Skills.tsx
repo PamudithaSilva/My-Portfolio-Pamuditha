@@ -29,9 +29,9 @@ export default function Skills() {
             <h3 className="font-semibold mb-4 text-slate-200">{category}</h3>
             <div className="flex flex-wrap gap-2">
               {items.map((s) => (
-                <span key={s} className="chip">
+                <motion.span key={s} whileHover={{ y: -3, scale: 1.04 }} transition={{ type: 'spring', stiffness: 420, damping: 20 }} className="chip cursor-default hover:border-accent2/40">
                   {s}
-                </span>
+                </motion.span>
               ))}
             </div>
           </motion.div>

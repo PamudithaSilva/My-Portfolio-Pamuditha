@@ -25,7 +25,8 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="glass p-6 flex flex-col justify-between hover:-translate-y-1 hover:border-accent/40 transition-all duration-300"
+            whileHover={{ y: -7, scale: 1.012 }}
+            className="glass p-6 flex flex-col justify-between hover:border-accent/50 transition-[border-color,box-shadow] duration-300 hover:shadow-xl hover:shadow-accent/10"
           >
             <div>
               <div className="flex items-start justify-between mb-3">
@@ -35,9 +36,9 @@ export default function Projects() {
               <p className="text-sm text-slate-400 leading-relaxed mb-4">{p.description}</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {p.tags.map((t) => (
-                  <span key={t} className="chip !py-1 !text-xs">
+                  <motion.span key={t} whileHover={{ y: -2, backgroundColor: 'rgba(255,255,255,0.11)' }} className="chip !py-1 !text-xs">
                     {t}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
