@@ -85,7 +85,7 @@ export default function Navbar() {
             transition={{ duration: 0.22, ease: 'easeOut' }}
             className="md:hidden overflow-hidden"
           >
-            <div className="mt-4 px-6">
+            <div className="mt-4 px-5 sm:px-6">
               <ul id="mobile-navigation" className="glass p-4 flex flex-col gap-1 text-slate-300">
                 {links.map((l, index) => (
                   <motion.li

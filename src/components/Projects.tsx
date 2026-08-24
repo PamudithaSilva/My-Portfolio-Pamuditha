@@ -17,7 +17,7 @@ export default function Projects() {
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid items-stretch gap-6 md:grid-cols-2">
         {projects.map((p, i) => (
           <motion.div
             key={p.title}
@@ -26,12 +26,12 @@ export default function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
             whileHover={{ y: -7, scale: 1.012 }}
-            className="glass p-6 flex flex-col justify-between hover:border-accent/50 transition-[border-color,box-shadow] duration-300 hover:shadow-xl hover:shadow-accent/10"
+            className="glass flex h-full min-w-0 flex-col justify-between p-6 hover:border-accent/50 transition-[border-color,box-shadow] duration-300 hover:shadow-xl hover:shadow-accent/10"
           >
             <div>
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="font-semibold text-lg leading-snug pr-4">{p.title}</h3>
-                <span className="text-xs text-slate-500 whitespace-nowrap">{p.period}</span>
+              <div className="mb-3 flex items-start justify-between gap-4">
+                <h3 className="min-w-0 font-semibold text-lg leading-snug">{p.title}</h3>
+                <span className="shrink-0 text-right text-xs text-slate-500 whitespace-nowrap">{p.period}</span>
               </div>
               <p className="text-sm text-slate-400 leading-relaxed mb-4">{p.description}</p>
               <div className="flex flex-wrap gap-2 mb-6">
