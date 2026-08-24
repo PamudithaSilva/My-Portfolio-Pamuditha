@@ -66,15 +66,15 @@ export default function Hero() {
           transition={{ type: 'spring', stiffness: 120, damping: 18, delay: 0.25 }}
           className="relative flex justify-center md:justify-end"
         >
-          <motion.div whileHover={{ y: -8, rotate: 1.5 }} transition={{ type: 'spring', stiffness: 260, damping: 18 }} className="relative h-64 w-64 sm:h-72 sm:w-72 md:h-96 md:w-96">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-fuchsia-500 to-accent2 animate-gradient-move blur-sm" />
+          <div className="relative h-64 w-64 sm:h-72 sm:w-72 md:h-96 md:w-96">
+            <div className="profile-ring absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-fuchsia-500 to-accent2 blur-sm" />
             <div className="absolute inset-2 rounded-full bg-base overflow-hidden border border-white/10">
               <img src={profileImg} alt={`Portrait of ${profile.name}`} className="w-full h-full object-cover" />
             </div>
             <div className="absolute -bottom-4 -right-4 glass px-4 py-2 text-sm font-semibold">
               Computer Science
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 
