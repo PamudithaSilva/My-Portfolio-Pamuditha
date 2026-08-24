@@ -16,7 +16,7 @@ export default function Skills() {
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid items-stretch gap-6 md:grid-cols-2">
         {Object.entries(skills).map(([category, items], i) => (
           <motion.div
             key={category}
@@ -24,7 +24,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="glass p-6 hover:border-white/20 transition-colors"
+            className="glass h-full min-w-0 p-6 hover:border-white/20 transition-colors"
           >
             <h3 className="font-semibold mb-4 text-slate-200">{category}</h3>
             <div className="flex flex-wrap gap-2">

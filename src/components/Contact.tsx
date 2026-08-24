@@ -23,11 +23,11 @@ export default function Contact() {
           I'm currently looking for internship opportunities and interesting collaborations. Feel free to reach out.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-10 relative z-10">
-          <a href={`mailto:${profile.email}`} className="btn-primary">
+        <div className="relative z-10 mb-10 flex flex-wrap justify-center gap-4">
+          <a href={`mailto:${profile.email}`} className="btn-primary max-w-full break-all text-center">
             <FiMail /> {profile.email}
           </a>
-          <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className="btn-outline">
+          <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className="btn-outline max-w-full">
             <FiPhone /> {profile.phone}
           </a>
         </div>

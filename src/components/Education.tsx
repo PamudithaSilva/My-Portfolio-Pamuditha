@@ -12,8 +12,8 @@ export default function Education() {
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-10">
-        <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+      <div className="grid items-start gap-10 md:grid-cols-2">
+        <motion.div className="min-w-0" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h3 className="flex items-center gap-2 font-semibold text-lg mb-6">
             <FiBookOpen className="text-accent2" /> Education
           </h3>
@@ -40,7 +40,7 @@ export default function Education() {
           </ul>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <motion.div className="min-w-0" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h3 className="flex items-center gap-2 font-semibold text-lg mb-6">
             <FiAward className="text-accent2" /> Certifications
           </h3>

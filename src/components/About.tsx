@@ -36,7 +36,7 @@ export default function About() {
         <p className="text-slate-400 max-w-3xl leading-relaxed mb-14">{profile.about}</p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid items-stretch gap-6 md:grid-cols-3">
         {highlights.map((h, i) => (
           <motion.div
             key={h.title}
@@ -44,7 +44,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="glass p-6 hover:-translate-y-1 hover:border-accent/40 transition-all duration-300"
+            className="glass h-full min-w-0 p-6 hover:-translate-y-1 hover:border-accent/40 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-xl mb-4">
               {h.icon}
