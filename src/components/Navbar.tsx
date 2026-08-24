@@ -29,6 +29,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 768px)')
+    const closeOnDesktop = () => {
+      if (desktopQuery.matches) setOpen(false)
+    }
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+
+    desktopQuery.addEventListener('change', closeOnDesktop)
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      desktopQuery.removeEventListener('change', closeOnDesktop)
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [])
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -66,6 +83,7 @@ export default function Navbar() {
         </a>
 
         <button
+          type="button"
           className="md:hidden text-2xl"
           onClick={() => setOpen(!open)}
           aria-label="Toggle navigation menu"
@@ -79,14 +97,14 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0, y: -8 }}
-            animate={{ opacity: 1, height: 'auto', y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -8 }}
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="md:hidden overflow-hidden"
+            className="absolute inset-x-0 top-full md:hidden"
           >
-            <div className="mt-4 px-5 sm:px-6">
-              <ul id="mobile-navigation" className="glass p-4 flex flex-col gap-1 text-slate-300">
+            <div className="section-container !py-0">
+              <ul id="mobile-navigation" className="glass mt-3 flex max-h-[calc(100svh-5rem)] flex-col gap-1 overflow-y-auto p-2 text-slate-300 shadow-2xl shadow-black/30">
                 {links.map((l, index) => (
                   <motion.li
                     key={l.href}
@@ -97,7 +115,7 @@ export default function Navbar() {
                     <a
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className={`block rounded-lg px-3 py-2 transition-colors ${active === l.href ? 'bg-white/10 text-white' : 'hover:bg-white/5 hover:text-white'}`}
+                      className={`block rounded-lg px-3 py-3 transition-colors ${active === l.href ? 'bg-white/10 text-white' : 'hover:bg-white/5 hover:text-white'}`}
                     >
                       {l.label}
                     </a>
