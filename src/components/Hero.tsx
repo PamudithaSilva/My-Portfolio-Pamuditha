@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { HiArrowDown } from 'react-icons/hi'
-import { FiArrowUpRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
+import { FiArrowUpRight, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { profile } from '../data'
 import profileImg from '../assets/profile.jpg'
 
@@ -41,6 +41,9 @@ export default function Hero() {
             </a>
             <a href="#contact" className="btn-outline">
               Get in touch
+            </a>
+            <a href="/Pamuditha-Silva-CV.pdf" download className="btn-outline">
+              Download CV <FiDownload />
             </a>
           </motion.div>
 
