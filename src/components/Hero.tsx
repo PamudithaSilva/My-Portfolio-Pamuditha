@@ -4,6 +4,11 @@ import { FiArrowUpRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { profile } from '../data'
 import profileImg from '../assets/profile.jpg'
 
+const heroItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+}
+
 export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden min-h-screen flex items-center pt-24">
@@ -13,30 +18,33 @@ export default function Hero() {
 
       <div className="section-container grid md:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1, delayChildren: 0.08 } },
+          }}
         >
-          <p className="chip inline-flex items-center gap-2 mb-6 text-accent2">
+          <motion.p variants={heroItem} transition={{ duration: 0.55 }} className="chip inline-flex items-center gap-2 mb-6 text-accent2">
             <span className="w-2 h-2 rounded-full bg-accent2 animate-pulse-soft" aria-hidden="true" />
             Available for internships
-          </p>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+          </motion.p>
+          <motion.h1 variants={heroItem} transition={{ duration: 0.6 }} className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
             Hi, I&apos;m <span className="gradient-text">{profile.name}</span>
-          </h1>
-          <p className="text-lg md:text-xl text-slate-400 mb-6">{profile.title}</p>
-          <p className="text-slate-400 max-w-lg leading-relaxed mb-10">{profile.about}</p>
+          </motion.h1>
+          <motion.p variants={heroItem} transition={{ duration: 0.55 }} className="text-lg md:text-xl text-slate-400 mb-6">{profile.title}</motion.p>
+          <motion.p variants={heroItem} transition={{ duration: 0.55 }} className="text-slate-400 max-w-lg leading-relaxed mb-10">{profile.about}</motion.p>
 
-          <div className="flex flex-wrap items-center gap-4 mb-10">
+          <motion.div variants={heroItem} transition={{ duration: 0.55 }} className="flex flex-wrap items-center gap-4 mb-10">
             <a href="#projects" className="btn-primary">
               View my work <FiArrowUpRight />
             </a>
             <a href="#contact" className="btn-outline">
               Get in touch
             </a>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-5 text-2xl text-slate-400">
+          <motion.div variants={heroItem} transition={{ duration: 0.55 }} className="flex items-center gap-5 text-2xl text-slate-400">
             <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-accent2 transition-colors" aria-label="Visit Pamuditha's GitHub profile">
               <FiGithub />
             </a>
@@ -46,16 +54,16 @@ export default function Hero() {
             <a href={`mailto:${profile.email}`} className="hover:text-accent2 transition-colors" aria-label="Email Pamuditha">
               <FiMail />
             </a>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ type: 'spring', stiffness: 120, damping: 18, delay: 0.25 }}
           className="relative flex justify-center"
         >
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
+          <motion.div whileHover={{ y: -8, rotate: 1.5 }} transition={{ type: 'spring', stiffness: 260, damping: 18 }} className="relative w-72 h-72 md:w-96 md:h-96">
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-fuchsia-500 to-accent2 animate-gradient-move blur-sm" />
             <div className="absolute inset-2 rounded-full bg-base overflow-hidden border border-white/10">
               <img src={profileImg} alt={`Portrait of ${profile.name}`} className="w-full h-full object-cover" />
@@ -63,7 +71,7 @@ export default function Hero() {
             <div className="absolute -bottom-4 -right-4 glass px-4 py-2 text-sm font-semibold">
               Computer Science
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
