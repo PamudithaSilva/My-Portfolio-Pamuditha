@@ -11,12 +11,12 @@ const heroItem = {
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative flex min-h-[100svh] items-center overflow-hidden pt-24 md:min-h-screen">
+    <section id="hero" className="relative flex min-h-[100svh] items-start overflow-hidden pt-16 sm:pt-20 md:min-h-screen md:pt-24">
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-accent/30 rounded-full blur-3xl animate-float" />
       <div className="absolute top-1/3 -right-32 w-96 h-96 bg-accent2/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
       <div className="absolute inset-0 opacity-[0.045] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:3.5rem_3.5rem]" />
 
-      <div className="section-container relative z-10 grid items-center gap-14 md:grid-cols-2 lg:gap-20">
+      <div className="section-container relative z-10 grid items-center gap-14 !pt-10 !pb-16 sm:!pt-12 sm:!pb-20 md:grid-cols-2 md:!pt-14 md:!pb-24 lg:!pt-16 lg:gap-20">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -71,9 +71,7 @@ export default function Hero() {
             <div className="absolute inset-2 rounded-full bg-base overflow-hidden border border-white/10">
               <img src={profileImg} alt={`Portrait of ${profile.name}`} className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-4 -right-4 glass px-4 py-2 text-sm font-semibold">
-              Computer Science
-            </div>
+            
           </div>
         </motion.div>
       </div>
