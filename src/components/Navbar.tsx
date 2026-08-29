@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { HiMenu, HiX } from 'react-icons/hi'
+import { HiMenu, HiMoon, HiSun, HiX } from 'react-icons/hi'
 
 const links = [
   { label: 'About', href: '#about' },
@@ -14,6 +14,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('#about')
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+  })
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,6 +33,12 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('light', theme === 'light')
+    document.documentElement.style.colorScheme = theme
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     const desktopQuery = window.matchMedia('(min-width: 768px)')
@@ -63,7 +74,7 @@ export default function Navbar() {
               <a
                 href={l.href}
                 aria-current={active === l.href ? 'page' : undefined}
-                className={`relative py-2 transition-colors ${active === l.href ? 'text-white' : 'hover:text-white'}`}
+                className={`relative py-2 transition-colors ${active === l.href ? 'nav-link-active' : 'hover:text-white'}`}
               >
                 {l.label}
                 {active === l.href && (
@@ -78,20 +89,32 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a href="#contact" className="hidden md:inline-flex btn-primary !py-2 !px-5 text-sm">
-          Let's Talk
-        </a>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setTheme((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark')}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? <HiSun /> : <HiMoon />}
+          </button>
 
-        <button
-          type="button"
-          className="md:hidden text-2xl"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation menu"
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-        >
-          {open ? <HiX /> : <HiMenu />}
-        </button>
+          <a href="#contact" className="hidden md:inline-flex btn-primary !py-2 !px-5 text-sm">
+            Let's Talk
+          </a>
+
+          <button
+            type="button"
+            className="md:hidden text-2xl"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+          >
+            {open ? <HiX /> : <HiMenu />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -115,7 +138,7 @@ export default function Navbar() {
                     <a
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className={`block rounded-lg px-3 py-3 transition-colors ${active === l.href ? 'bg-white/10 text-white' : 'hover:bg-white/5 hover:text-white'}`}
+                      className={`block rounded-lg px-3 py-3 transition-colors ${active === l.href ? 'nav-mobile-active' : 'hover:bg-white/5 hover:text-white'}`}
                     >
                       {l.label}
                     </a>
