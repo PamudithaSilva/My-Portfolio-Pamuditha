@@ -10,8 +10,11 @@ export default {
         accent2: '#22d3ee',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        display: ['Poppins', 'ui-sans-serif', 'system-ui'],
+        // Apple platforms resolve -apple-system to San Francisco and switch
+        // between SF Pro Text and SF Pro Display at the appropriate size.
+        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"SF Pro Display"', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"SF Mono"', 'SFMono-Regular', 'ui-monospace', 'Consolas', '"Liberation Mono"', 'monospace'],
       },
       animation: {
         'gradient-move': 'gradientMove 8s ease infinite',
