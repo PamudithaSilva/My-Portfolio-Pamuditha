@@ -21,6 +21,11 @@
       radial-gradient(circle at 88% 18%, rgba(34, 211, 238, 0.1), transparent 26rem);
   }
 
+  ::selection {
+    background: rgba(34, 211, 238, 0.3);
+    color: #fff;
+  }
+
   html.light {
     background: #f6f8fc;
   }
@@ -154,6 +159,7 @@
 
   .section-title {
     @apply text-3xl md:text-4xl font-bold tracking-tight;
+    text-wrap: balance;
   }
 }
 
@@ -187,6 +193,14 @@
 
   html.light .bg-base\/80 {
     background-color: rgba(246, 248, 252, 0.82);
+  }
+
+  html.light .bg-base\/40 {
+    background-color: rgba(246, 248, 252, 0.54);
+  }
+
+  html.light .bg-base\/75 {
+    background-color: rgba(246, 248, 252, 0.8);
   }
 
   html.light .text-slate-200 {

@@ -12,9 +12,9 @@ const heroItem = {
 export default function Hero() {
   return (
     <section id="hero" className="relative flex min-h-[100svh] items-start overflow-hidden pt-16 sm:pt-20 md:min-h-screen md:pt-24">
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-accent/30 rounded-full blur-3xl animate-float" />
-      <div className="absolute top-1/3 -right-32 w-96 h-96 bg-accent2/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-      <div className="absolute inset-0 opacity-[0.045] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:3.5rem_3.5rem]" />
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-accent/30 rounded-full blur-3xl animate-float" aria-hidden="true" />
+      <div className="absolute top-1/3 -right-32 w-96 h-96 bg-accent2/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} aria-hidden="true" />
+      <div className="absolute inset-0 opacity-[0.045] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:3.5rem_3.5rem]" aria-hidden="true" />
 
       <div className="section-container relative z-10 grid items-center gap-14 !pt-10 !pb-16 sm:!pt-12 sm:!pb-20 md:grid-cols-2 md:!pt-14 md:!pb-24 lg:!pt-16 lg:gap-20">
         <motion.div
