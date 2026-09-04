@@ -17,10 +17,14 @@
 
 @layer utilities {
   .ambient-background {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none; background-color: #0b1220;
+    position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background-color: #0b1220;
     background-image: linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px), radial-gradient(circle at 80% -10%, rgba(30, 64, 175, 0.20), transparent 36rem), radial-gradient(circle at 0% 76%, rgba(14, 116, 144, 0.12), transparent 31rem);
     background-size: 48px 48px, 48px 48px, auto, auto;
+    animation: grid-drift 26s linear infinite;
   }
+  .ambient-background::before, .ambient-background::after { content: ''; position: absolute; width: 42rem; height: 42rem; border-radius: 9999px; filter: blur(92px); opacity: 0.28; will-change: transform; }
+  .ambient-background::before { top: -20rem; right: -16rem; background: #2563eb; animation: ambient-orbit-one 19s ease-in-out infinite alternate; }
+  .ambient-background::after { bottom: -25rem; left: -18rem; background: #0891b2; animation: ambient-orbit-two 23s ease-in-out infinite alternate; }
   .cursor-glow { display: none; }
   .section-container { @apply mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24; }
   .content-rule { @apply border-t border-white/10; }
@@ -61,5 +65,9 @@ html.light .hover\:text-white:hover { color: #172033; }
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: #0b1220; }
 ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
+
+@keyframes grid-drift { from { background-position: 0 0, 0 0, 80% -10%, 0% 76%; } to { background-position: 48px 48px, 48px 48px, 80% -10%, 0% 76%; } }
+@keyframes ambient-orbit-one { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-11rem, 10rem, 0) scale(1.15); } }
+@keyframes ambient-orbit-two { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(12rem, -9rem, 0) scale(1.12); } }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; } }
