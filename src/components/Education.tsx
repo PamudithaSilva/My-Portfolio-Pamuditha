@@ -4,11 +4,11 @@ import { FiAward, FiBookOpen, FiCheck, FiUsers } from 'react-icons/fi'
 
 export default function Education() {
   return (
-    <section id="education" className="section-container">
+    <section id="education" className="section-container content-rule">
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <p className="eyebrow">Background</p>
         <h2 className="section-title mb-12">
-          Education and <span className="gradient-text">achievements</span>
+          Education &amp; <span className="gradient-text">development.</span>
         </h2>
       </motion.div>
 
@@ -17,12 +17,12 @@ export default function Education() {
           <h3 className="flex items-center gap-2 font-semibold text-lg mb-6">
             <FiBookOpen className="text-accent2" /> Education
           </h3>
-          <div className="space-y-6 border-l border-white/10 pl-6">
+          <div className="space-y-7 border-l border-white/10 pl-6">
             {education.map((item) => (
               <div key={item.school} className="relative">
-                <span className="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-gradient-to-r from-accent to-accent2" />
-                <p className="text-sm text-slate-500 mb-1">{item.period}</p>
-                <h4 className="font-semibold">{item.school}</h4>
+                <span className="absolute -left-[29px] top-1.5 h-3 w-3 rounded-full border-2 border-base bg-accent2" />
+                <p className="mb-1 font-mono text-xs text-accent2">{item.period}</p>
+                <h4 className="font-semibold text-white">{item.school}</h4>
                 <p className="text-slate-400 text-sm leading-relaxed">{item.degree}</p>
               </div>
             ))}
@@ -46,7 +46,7 @@ export default function Education() {
           </h3>
           <ul className="space-y-3 mb-10">
             {certifications.map((item) => (
-              <li key={item} className="glass px-4 py-3 text-sm text-slate-300 hover:border-white/20 transition-colors">{item}</li>
+              <li key={item} className="surface px-4 py-3 text-sm text-slate-300 transition-colors hover:border-white/20">{item}</li>
             ))}
           </ul>
 
@@ -55,7 +55,7 @@ export default function Education() {
           </h3>
           <ul className="space-y-3">
             {hackathons.map((item) => (
-              <li key={item} className="glass px-4 py-3 text-sm text-slate-300 hover:border-white/20 transition-colors">{item}</li>
+              <li key={item} className="surface px-4 py-3 text-sm text-slate-300 transition-colors hover:border-white/20">{item}</li>
             ))}
           </ul>
         </motion.div>
