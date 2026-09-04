@@ -3,7 +3,7 @@ import { skills } from '../data'
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-container">
+    <section id="skills" className="section-container content-rule">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -12,7 +12,7 @@ export default function Skills() {
       >
         <p className="eyebrow">Skills</p>
         <h2 className="section-title mb-12">
-          My <span className="gradient-text">Tech Stack</span>
+          Tools I use to <span className="gradient-text">build.</span>
         </h2>
       </motion.div>
 
@@ -24,12 +24,12 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="glass h-full min-w-0 p-6 hover:border-white/20 transition-colors"
+            className="surface h-full min-w-0 p-7 transition-colors hover:border-white/20"
           >
-            <h3 className="font-semibold mb-4 text-slate-200">{category}</h3>
+            <h3 className="mb-5 font-mono text-xs font-medium uppercase tracking-[0.14em] text-accent2">{category}</h3>
             <div className="flex flex-wrap gap-2">
               {items.map((s) => (
-                <motion.span key={s} whileHover={{ y: -3, scale: 1.04 }} transition={{ type: 'spring', stiffness: 420, damping: 20 }} className="chip cursor-default hover:border-accent2/40">
+                <motion.span key={s} whileHover={{ y: -2 }} transition={{ type: 'spring', stiffness: 420, damping: 20 }} className="chip cursor-default hover:border-accent2/40">
                   {s}
                 </motion.span>
               ))}

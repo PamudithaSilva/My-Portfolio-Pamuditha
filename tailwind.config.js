@@ -4,16 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#0a0a0f',
-        surface: '#12131a',
-        accent: '#7c3aed',
-        accent2: '#22d3ee',
+        base: '#0b1220',
+        surface: '#111b2e',
+        accent: '#2563eb',
+        accent2: '#38bdf8',
       },
       fontFamily: {
         // Apple platforms resolve -apple-system to San Francisco and switch
         // between SF Pro Text and SF Pro Display at the appropriate size.
-        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"SF Pro Display"', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['"SF Mono"', 'SFMono-Regular', 'ui-monospace', 'Consolas', '"Liberation Mono"', 'monospace'],
       },
       animation: {
