@@ -1,67 +1,165 @@
-import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
-import { projects } from '../data'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { FiArrowUpRight, FiCode, FiExternalLink, FiFolder, FiGithub, FiStar } from 'react-icons/fi'
+import { projects, ProjectCategory } from '../data'
+
+const categories: { id: ProjectCategory; label: string }[] = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'fullstack', label: 'Full-Stack' },
+  { id: 'ai-api', label: 'AI & APIs' },
+  { id: 'systems', label: 'Systems & Data' },
+]
 
 export default function Projects() {
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all')
+
+  const filteredProjects =
+    activeCategory === 'all'
+      ? projects
+      : projects.filter((p) => p.category === activeCategory)
+
   return (
     <section id="projects" className="section-container content-rule">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <p className="eyebrow">Portfolio</p>
-        <h2 className="section-title mb-12">
-          Selected <span className="gradient-text">work.</span>
-        </h2>
-      </motion.div>
+      {/* Header */}
+      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="eyebrow">
+            <FiFolder className="text-sm" /> Portfolio
+          </span>
+          <h2 className="section-title">
+            Featured <span className="gradient-text">creations.</span>
+          </h2>
+        </motion.div>
 
-      <div className="grid items-stretch gap-6 md:grid-cols-2">
-        {projects.map((p, i) => (
-          <motion.div
-            key={p.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            whileHover={{ y: -5 }}
-            className="surface flex h-full min-w-0 flex-col justify-between p-7 transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-xl hover:shadow-accent/10"
-          >
-            <div>
-              <div className="mb-3 flex items-start justify-between gap-4">
-                <h3 className="min-w-0 text-xl font-semibold leading-snug text-white">{p.title}</h3>
-                <span className="shrink-0 whitespace-nowrap font-mono text-[0.68rem] text-accent2">{p.period}</span>
-              </div>
-              <p className="text-sm text-slate-400 leading-relaxed mb-4">{p.description}</p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {p.tags.map((t) => (
-                  <motion.span key={t} whileHover={{ y: -2, backgroundColor: 'rgba(255,255,255,0.11)' }} className="chip !py-1 !text-xs">
-                    {t}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-            {p.links.length > 0 && (
-              <div className="flex gap-5 border-t border-white/10 pt-4">
-                {p.links.map((l) => (
-                  <a
-                    key={l.url}
-                    href={l.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-accent2 transition-colors hover:text-white"
-                    aria-label={`${l.label}: ${p.title}`}
-                  >
-                    {l.label.toLowerCase().includes('github') ? <FiGithub /> : <FiExternalLink />}
-                    {l.label}
-                  </a>
-                ))}
-              </div>
-            )}
-          </motion.div>
-        ))}
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center gap-1.5 rounded-2xl border border-white/[0.08] bg-slate-900/60 p-1.5 backdrop-blur-xl">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setActiveCategory(cat.id)}
+                className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
+                  isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <span className="relative z-10">{cat.label}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="active-project-filter"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/80 to-cyan-600/80 shadow-md shadow-cyan-500/20"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </button>
+            )
+          })}
+        </div>
       </div>
+
+      {/* Projects Grid */}
+      <motion.div layout className="grid gap-6 md:grid-cols-2">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((p, i) => (
+            <motion.div
+              layout
+              key={p.id}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              whileHover={{ y: -6 }}
+              className="glass-card group relative flex flex-col justify-between p-6 sm:p-8 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-2xl hover:shadow-cyan-500/10"
+            >
+              {/* Card Header */}
+              <div>
+                <div className="mb-4 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[0.68rem] uppercase tracking-wider text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 rounded-md px-2.5 py-1">
+                      {p.period}
+                    </span>
+                    {p.featured && (
+                      <span className="inline-flex items-center gap-1 font-mono text-[0.65rem] font-bold uppercase tracking-wider text-amber-300 bg-amber-950/40 border border-amber-500/30 rounded-md px-2 py-1">
+                        <FiStar className="text-xs" /> Featured
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {p.links.map((l) => (
+                      <a
+                        key={l.url}
+                        href={l.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-sm text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/10 hover:text-cyan-300"
+                        aria-label={`${l.label} for ${p.title}`}
+                      >
+                        {l.type === 'github' ? <FiGithub /> : <FiExternalLink />}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Title & Subtitle */}
+                <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
+                  {p.title}
+                </h3>
+                <p className="mt-0.5 text-xs font-mono text-slate-400 mb-3.5">
+                  {p.subtitle}
+                </p>
+
+                {/* Highlight banner */}
+                <div className="mb-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 text-xs text-slate-300">
+                  <span className="font-semibold text-cyan-300">Key Highlight: </span>
+                  {p.highlight}
+                </div>
+
+                {/* Description */}
+                <p className="text-xs leading-relaxed text-slate-400 sm:text-sm mb-6">
+                  {p.description}
+                </p>
+              </div>
+
+              {/* Bottom Tags and Links */}
+              <div>
+                <div className="mb-5 flex flex-wrap gap-1.5">
+                  {p.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md border border-white/[0.06] bg-slate-900/90 px-2.5 py-1 font-mono text-[0.7rem] text-slate-300 transition-colors group-hover:border-white/15"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {p.links.length > 0 && (
+                  <div className="flex items-center gap-4 border-t border-white/[0.07] pt-4">
+                    {p.links.map((l) => (
+                      <a
+                        key={l.url}
+                        href={l.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-400 transition-all hover:text-cyan-300 hover:translate-x-0.5"
+                      >
+                        <span>{l.label}</span>
+                        <FiArrowUpRight className="text-sm" />
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   )
 }
