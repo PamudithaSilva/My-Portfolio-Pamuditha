@@ -1,56 +1,95 @@
 import { motion } from 'framer-motion'
 import { profile } from '../data'
-import { FiCode, FiShield, FiZap } from 'react-icons/fi'
+import { FiCode, FiCpu, FiDatabase, FiLayers, FiShield, FiZap } from 'react-icons/fi'
 
-const highlights = [
+const capabilities = [
   {
-    icon: <FiCode />,
-    title: 'Full-Stack Development',
-    text: 'Building scalable web apps with React (TypeScript) and Node.js, from database design to deployment.',
+    icon: <FiCode className="text-xl text-blue-400" />,
+    gradient: 'from-blue-500/20 to-cyan-500/5',
+    borderHover: 'hover:border-blue-500/40',
+    title: 'Full-Stack Web Engineering',
+    text: 'Building performant single-page apps and server-rendered architectures with React, TypeScript, Node.js, and modern CSS.',
   },
   {
-    icon: <FiShield />,
-    title: 'Cybersecurity Minded',
-    text: 'Strong foundation in secure, efficient system design backed by cloud security coursework.',
+    icon: <FiCpu className="text-xl text-cyan-400" />,
+    gradient: 'from-cyan-500/20 to-teal-500/5',
+    borderHover: 'hover:border-cyan-500/40',
+    title: 'Generative AI Integrations',
+    text: 'Integrating state-of-the-art LLMs (like Google Gemini API) for conversational agents, real-time contextual recommendations, and automated flows.',
   },
   {
-    icon: <FiZap />,
-    title: 'API & Integrations',
-    text: 'Experienced integrating third-party services like Stripe and Gemini API into production apps.',
+    icon: <FiDatabase className="text-xl text-violet-400" />,
+    gradient: 'from-violet-500/20 to-purple-500/5',
+    borderHover: 'hover:border-violet-500/40',
+    title: 'Robust REST APIs & Cloud DBs',
+    text: 'Designing resilient RESTful microservices with Java JAX-RS and Express, paired with MongoDB, MySQL, and PostgreSQL.',
+  },
+  {
+    icon: <FiShield className="text-xl text-emerald-400" />,
+    gradient: 'from-emerald-500/20 to-green-500/5',
+    borderHover: 'hover:border-emerald-500/40',
+    title: 'Secure & Reliable Architecture',
+    text: 'Applying cloud security principles, rigorous error boundary handling, and secure third-party payment gateways like Stripe.',
   },
 ]
 
 export default function About() {
   return (
     <section id="about" className="section-container content-rule">
+      {/* Header Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.6 }}
+        className="max-w-3xl"
       >
-        <p className="eyebrow">About me</p>
+        <span className="eyebrow">
+          <FiLayers className="text-sm" /> About Me
+        </span>
         <h2 className="section-title mb-6">
-          A practical approach to <span className="gradient-text">software development.</span>
+          Architecting systems with{' '}
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
+            precision and purpose.
+          </span>
         </h2>
-        <p className="max-w-3xl text-lg leading-relaxed text-slate-400 mb-14">{profile.about}</p>
+        <p className="text-base leading-relaxed text-slate-300 sm:text-lg mb-12">
+          {profile.about}
+        </p>
       </motion.div>
 
-      <div className="grid items-stretch gap-6 md:grid-cols-3">
-        {highlights.map((h, i) => (
+      {/* Bento Grid Capabilities */}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {capabilities.map((cap, i) => (
           <motion.div
-            key={h.title}
+            key={cap.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="surface h-full min-w-0 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50"
+            className={`glass-card relative flex flex-col justify-between p-6 transition-all duration-300 hover:-translate-y-1.5 ${cap.borderHover}`}
           >
-            <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg border border-accent2/30 bg-accent/15 text-xl text-accent2">
-              {h.icon}
+            {/* Top Glowing Orb in Card */}
+            <div className={`absolute top-0 right-0 h-28 w-28 rounded-full bg-gradient-to-br ${cap.gradient} blur-2xl pointer-events-none`} />
+
+            <div>
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-md shadow-md">
+                {cap.icon}
+              </div>
+              <h3 className="mb-2.5 text-base font-bold text-white tracking-tight">
+                {cap.title}
+              </h3>
+              <p className="text-xs leading-relaxed text-slate-400 sm:text-sm">
+                {cap.text}
+              </p>
             </div>
-            <h3 className="mb-2 text-lg font-semibold text-white">{h.title}</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">{h.text}</p>
+
+            <div className="mt-6 flex items-center gap-2 border-t border-white/[0.06] pt-4">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+              <span className="font-mono text-[0.7rem] uppercase tracking-wider text-slate-400">
+                Core Capability
+              </span>
+            </div>
           </motion.div>
         ))}
       </div>

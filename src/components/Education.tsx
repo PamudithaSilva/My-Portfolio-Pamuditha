@@ -1,64 +1,219 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { education, extraQualifications, certifications, hackathons } from '../data'
-import { FiAward, FiBookOpen, FiCheck, FiUsers } from 'react-icons/fi'
+import {
+  FiAward,
+  FiBookOpen,
+  FiCalendar,
+  FiCheckCircle,
+  FiCompass,
+  FiExternalLink,
+  FiGlobe,
+  FiLayers,
+  FiTarget,
+  FiTrendingUp,
+  FiUsers,
+} from 'react-icons/fi'
+
+type TabType = 'education' | 'certifications' | 'hackathons' | 'memberships'
+
+const tabs: { id: TabType; label: string; icon: React.ReactNode }[] = [
+  { id: 'education', label: 'Education', icon: <FiBookOpen /> },
+  { id: 'certifications', label: 'Certifications', icon: <FiAward /> },
+  { id: 'hackathons', label: 'Hackathons', icon: <FiTarget /> },
+  { id: 'memberships', label: 'Affiliations', icon: <FiUsers /> },
+]
 
 export default function Education() {
+  const [activeTab, setActiveTab] = useState<TabType>('education')
+
   return (
     <section id="education" className="section-container content-rule">
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-        <p className="eyebrow">Background</p>
-        <h2 className="section-title mb-12">
-          Education &amp; <span className="gradient-text">development.</span>
+      {/* Section Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.6 }}
+        className="max-w-3xl mb-10"
+      >
+        <span className="eyebrow">
+          <FiCompass className="text-sm" /> Journey &amp; Milestones
+        </span>
+        <h2 className="section-title">
+          Education &amp; <span className="gradient-text">achievements.</span>
         </h2>
       </motion.div>
 
-      <div className="grid items-start gap-10 md:grid-cols-2">
-        <motion.div className="min-w-0" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <h3 className="flex items-center gap-2 font-semibold text-lg mb-6">
-            <FiBookOpen className="text-accent2" /> Education
-          </h3>
-          <div className="space-y-7 border-l border-white/10 pl-6">
-            {education.map((item) => (
-              <div key={item.school} className="relative">
-                <span className="absolute -left-[29px] top-1.5 h-3 w-3 rounded-full border-2 border-base bg-accent2" />
-                <p className="mb-1 font-mono text-xs text-accent2">{item.period}</p>
-                <h4 className="font-semibold text-white">{item.school}</h4>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.degree}</p>
+      {/* Tabs Navigation */}
+      <div className="flex flex-wrap items-center gap-2 mb-8 border-b border-white/[0.08] pb-4">
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.id
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-200 ${
+                isActive
+                  ? 'text-cyan-300 bg-white/[0.07] border border-cyan-500/30 shadow-md shadow-cyan-500/10'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'
+              }`}
+            >
+              <span className="text-base">{tab.icon}</span>
+              <span>{tab.label}</span>
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Tab Panels */}
+      <div className="min-h-[320px]">
+        <AnimatePresence mode="wait">
+          {/* Tab 1: Education */}
+          {activeTab === 'education' && (
+            <motion.div
+              key="education"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              {education.map((item, idx) => (
+                <div
+                  key={item.school}
+                  className="glass-card relative overflow-hidden p-6 sm:p-8 transition-all hover:border-cyan-500/30"
+                >
+                  <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+                    <div>
+                      <div className="flex items-center gap-3 mb-1.5">
+                        <span className="font-mono text-xs font-semibold uppercase text-cyan-400 bg-cyan-950/50 border border-cyan-500/30 px-2.5 py-0.5 rounded">
+                          {item.period}
+                        </span>
+                        <span className="font-mono text-xs text-slate-400">
+                          {item.status}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-white tracking-tight">
+                        {item.degree}
+                      </h3>
+                      <p className="text-sm font-medium text-slate-300 mt-1">
+                        {item.school}{' '}
+                        {item.partner && (
+                          <span className="text-cyan-400">({item.partner})</span>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="mt-4 text-xs leading-relaxed text-slate-400 sm:text-sm border-t border-white/[0.06] pt-4">
+                    {item.details}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Tab 2: Certifications */}
+          {activeTab === 'certifications' && (
+            <motion.div
+              key="certifications"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="grid gap-4 sm:grid-cols-2"
+            >
+              {certifications.map((cert) => (
+                <div
+                  key={cert.name}
+                  className="glass-card flex items-start gap-4 p-5 transition-all hover:border-cyan-500/30"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-lg">
+                    <FiAward />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[0.65rem] uppercase tracking-wider text-cyan-400">
+                      {cert.type} • {cert.issuer}
+                    </span>
+                    <h3 className="text-sm font-semibold text-white mt-0.5">
+                      {cert.name}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Tab 3: Hackathons */}
+          {activeTab === 'hackathons' && (
+            <motion.div
+              key="hackathons"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="grid gap-4 sm:grid-cols-2"
+            >
+              {hackathons.map((hack) => (
+                <div
+                  key={hack.name}
+                  className="glass-card flex flex-col justify-between p-5 transition-all hover:border-cyan-500/30"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[0.68rem] text-cyan-400 bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded">
+                        {hack.year}
+                      </span>
+                      <span className="font-mono text-[0.68rem] text-slate-400">
+                        {hack.type}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-bold text-white leading-snug">
+                      {hack.name}
+                    </h3>
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 border-t border-white/[0.06] pt-3 text-xs text-slate-400 font-mono">
+                    <FiGlobe className="text-cyan-400" />
+                    <span>{hack.org}</span>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Tab 4: Memberships */}
+          {activeTab === 'memberships' && (
+            <motion.div
+              key="memberships"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-4"
+            >
+              <div className="glass-card p-6">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-cyan-400 font-mono mb-4">
+                  Professional Memberships &amp; Extra Diplomas
+                </h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[...extraQualifications.educations, ...extraQualifications.memberships].map(
+                    (item) => (
+                      <div
+                        key={item}
+                        className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-slate-900/60 p-3.5 text-xs text-slate-300"
+                      >
+                        <FiCheckCircle className="text-cyan-400 shrink-0 text-sm mt-0.5" />
+                        <span className="leading-relaxed">{item}</span>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
-            ))}
-          </div>
-
-          <h3 className="flex items-center gap-2 font-semibold text-lg mt-10 mb-4">
-            <FiUsers className="text-accent2" /> Memberships and extra qualifications
-          </h3>
-          <ul className="space-y-2 text-sm text-slate-400">
-            {[...extraQualifications.educations, ...extraQualifications.memberships].map((item) => (
-              <li key={item} className="flex gap-2 leading-relaxed">
-                <FiCheck className="text-accent2 mt-0.5 shrink-0" aria-hidden="true" /> {item}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div className="min-w-0" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <h3 className="flex items-center gap-2 font-semibold text-lg mb-6">
-            <FiAward className="text-accent2" /> Certifications
-          </h3>
-          <ul className="space-y-3 mb-10">
-            {certifications.map((item) => (
-              <li key={item} className="surface px-4 py-3 text-sm text-slate-300 transition-colors hover:border-white/20">{item}</li>
-            ))}
-          </ul>
-
-          <h3 className="flex items-center gap-2 font-semibold text-lg mb-4">
-            <FiAward className="text-accent2" /> Hackathons and competitions
-          </h3>
-          <ul className="space-y-3">
-            {hackathons.map((item) => (
-              <li key={item} className="surface px-4 py-3 text-sm text-slate-300 transition-colors hover:border-white/20">{item}</li>
-            ))}
-          </ul>
-        </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   )
