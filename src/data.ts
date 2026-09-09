@@ -1,103 +1,233 @@
 export const profile = {
   name: 'Pamuditha Silva',
-  title: 'Computer Science Undergraduate and Full-Stack Developer',
+  role: 'Full-Stack Developer & CS Undergraduate',
+  title: 'Computer Science Undergraduate & Full-Stack Developer',
   location: 'Colombo, Sri Lanka',
   email: 'shalukapamuditha@gmail.com',
   phone: '+94 773635170',
   linkedin: 'https://www.linkedin.com/in/pamuditha-silva',
   github: 'https://github.com/PamudithaSilva',
+  status: 'Available for Internships & Projects',
   about:
-    'I am a third-year Computer Science student who builds secure, user-focused web applications. My experience spans React and TypeScript interfaces, Node.js services, REST APIs, cloud-ready data flows, and practical integrations with Stripe and Google Gemini.',
+    'I am a third-year Computer Science student at the University of Westminster who designs and builds high-performance, secure web applications. My experience spans responsive React and TypeScript frontends, robust Node.js services, scalable REST APIs, cloud-ready architectures, and generative AI integrations with Stripe and Google Gemini.',
+  stats: [
+    { label: 'Degree Track', value: 'BSc (Hons) CS' },
+    { label: 'Completed Projects', value: '4+ Builds' },
+    { label: 'Tech Stack', value: '15+ Tools' },
+    { label: 'Hackathons', value: '4 Contests' },
+  ],
 }
 
-export const skills = {
-  'Core development': ['Java', 'Python', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'PHP'],
-  'Web and backend': ['React', 'Node.js', 'Express', 'Laravel', 'REST APIs'],
-  'Data and cloud': ['MongoDB', 'MySQL', 'PostgreSQL', 'Stripe API', 'Gemini API'],
-  'Workflow and tools': ['Git', 'GitHub', 'Postman', 'Figma', 'Jira', 'VS Code', 'Maven'],
+export type SkillCategory = {
+  name: string
+  skills: { name: string; iconKey: string }[]
 }
+
+export const skillCategories: SkillCategory[] = [
+  {
+    name: 'Frontend & UI',
+    skills: [
+      { name: 'React', iconKey: 'react' },
+      { name: 'TypeScript', iconKey: 'typescript' },
+      { name: 'JavaScript', iconKey: 'javascript' },
+      { name: 'HTML5', iconKey: 'html' },
+      { name: 'Tailwind CSS', iconKey: 'tailwind' },
+      { name: 'Figma', iconKey: 'figma' },
+    ],
+  },
+  {
+    name: 'Backend & APIs',
+    skills: [
+      { name: 'Node.js', iconKey: 'nodejs' },
+      { name: 'Express', iconKey: 'express' },
+      { name: 'Java', iconKey: 'java' },
+      { name: 'Python', iconKey: 'python' },
+      { name: 'Laravel / PHP', iconKey: 'laravel' },
+      { name: 'REST APIs', iconKey: 'api' },
+    ],
+  },
+  {
+    name: 'Databases & Cloud',
+    skills: [
+      { name: 'MongoDB', iconKey: 'mongodb' },
+      { name: 'MySQL', iconKey: 'mysql' },
+      { name: 'PostgreSQL', iconKey: 'postgres' },
+      { name: 'AWS (Basics)', iconKey: 'aws' },
+      { name: 'Stripe API', iconKey: 'stripe' },
+      { name: 'Gemini AI API', iconKey: 'gemini' },
+    ],
+  },
+  {
+    name: 'Tools & DevOps',
+    skills: [
+      { name: 'Git & GitHub', iconKey: 'git' },
+      { name: 'Postman', iconKey: 'postman' },
+      { name: 'VS Code', iconKey: 'vscode' },
+      { name: 'Maven', iconKey: 'maven' },
+      { name: 'Jira', iconKey: 'jira' },
+    ],
+  },
+]
+
+export type ProjectCategory = 'all' | 'fullstack' | 'ai-api' | 'systems'
 
 export type Project = {
+  id: string
   title: string
+  subtitle: string
   period: string
+  category: ProjectCategory
   description: string
+  highlight: string
   tags: string[]
-  links: { label: string; url: string }[]
+  links: { label: string; url: string; type: 'github' | 'live' }[]
+  featured?: boolean
 }
 
 export const projects: Project[] = [
   {
-    title: 'Gemellery - Cloud-Deployed E-Commerce Platform',
+    id: 'gemellery',
+    title: 'Gemellery',
+    subtitle: 'Cloud-Deployed E-Commerce Platform',
     period: 'Nov 2025 - Mar 2026',
+    category: 'fullstack',
+    featured: true,
+    highlight: 'Integrated Stripe Payments & Gemini AI Chatbot with realtime order tracking',
     description:
-      'An AI-powered jewellery storefront built with React, TypeScript, and Node.js. I delivered contact and shipping flows, cart and checkout experiences, order-status tracking, a Gemini chatbot, and secure Stripe payments.',
-    tags: ['React', 'TypeScript', 'Node.js', 'Stripe API', 'Gemini API'],
+      'An AI-powered luxury jewellery storefront built with React, TypeScript, and Node.js. Features frictionless contact/shipping workflows, dynamic cart & checkout, live order-status tracking, and an integrated Gemini chatbot assistant.',
+    tags: ['React', 'TypeScript', 'Node.js', 'Stripe API', 'Gemini API', 'Tailwind CSS'],
     links: [
-      { label: 'GitHub', url: 'https://github.com/Gemellery/Gemellery' },
-      { label: 'Live site', url: 'https://gemellery.lk' },
+      { label: 'GitHub', url: 'https://github.com/Gemellery/Gemellery', type: 'github' },
+      { label: 'Live Demo', url: 'https://gemellery.lk', type: 'live' },
     ],
   },
   {
-    title: 'SmartCampus Sensor and Room Management API',
+    id: 'smart-campus',
+    title: 'SmartCampus API',
+    subtitle: 'Sensor & Room Management REST API',
     period: 'Feb 2026 - Mar 2026',
+    category: 'ai-api',
+    featured: true,
+    highlight: 'Modular Java JAX-RS Jersey backend with custom error handling & test suites',
     description:
-      'A Java REST API using JAX-RS (Jersey) and Apache Tomcat for rooms, sensors, and nested readings. It includes custom error handling, in-memory collections, Postman testing, and Maven-based project management.',
-    tags: ['Java', 'JAX-RS', 'Tomcat', 'Maven', 'Postman'],
-    links: [{ label: 'GitHub', url: 'https://github.com/PamudithaSilva/smart-campus-api' }],
+      'Enterprise-grade Java REST API using JAX-RS (Jersey) and Apache Tomcat for managing IoT rooms, sensors, and telemetry readings. Built with clean separation of concerns, comprehensive error boundaries, in-memory collections, and Postman testing.',
+    tags: ['Java', 'JAX-RS', 'Tomcat', 'Maven', 'Postman', 'REST Architecture'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/PamudithaSilva/smart-campus-api', type: 'github' },
+    ],
   },
   {
-    title: 'Career Guidance AI Chatbot',
+    id: 'career-guidance',
+    title: 'Career Guidance AI',
+    subtitle: 'Smart Career Advisory Chatbot',
     period: 'Jan 2026 - Feb 2026',
+    category: 'ai-api',
+    featured: false,
+    highlight: 'Google Gemini generative AI integration with dynamic fallback resilience',
     description:
-      'A career guidance chatbot with a clean JavaScript frontend and an Express backend. It uses the Google Gemini API for tailored recommendations, with fallback handling, environment-based configuration, and CORS support.',
-    tags: ['JavaScript', 'Express', 'Gemini API', 'dotenv'],
-    links: [{ label: 'GitHub', url: 'https://github.com/PamudithaSilva/Carrier-guidance-chatbot' }],
+      'An intelligent career advisory chatbot featuring a sleek interactive JavaScript interface and an Express microservice backend. Leverages Google Gemini API for tailored career roadmaps, structured fallback handling, and secure environment configs.',
+    tags: ['JavaScript', 'Express', 'Gemini AI API', 'Node.js', 'REST'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/PamudithaSilva/Carrier-guidance-chatbot', type: 'github' },
+    ],
   },
   {
+    id: 'traffic-analysis',
     title: 'Traffic Analysis System',
+    subtitle: 'Desktop Congestion Visualizer',
     period: 'Dec 2024 - Jan 2025',
+    category: 'systems',
+    featured: false,
+    highlight: 'Data visualization tool with CSV parser & Tkinter statistical dashboard',
     description:
-      'A Python desktop tool that imports traffic CSVs, visualizes congestion through a Tkinter interface, and generates statistical summaries to support data-driven transport decisions.',
-    tags: ['Python', 'Tkinter', 'Data visualization'],
+      'A Python desktop tool that ingests high-volume traffic CSV data, visualizes municipal congestion bottlenecks through a Tkinter UI, and outputs statistical summaries to power data-backed urban transport planning.',
+    tags: ['Python', 'Tkinter', 'Data Visualization', 'CSV Analytics'],
     links: [],
   },
 ]
 
 export const education = [
   {
-    school: 'University of Westminster (Informatics Institute of Technology)',
+    school: 'University of Westminster',
+    partner: 'Informatics Institute of Technology (IIT)',
     degree: 'BSc (Hons) Computer Science',
     period: '2024 - 2028',
+    status: 'In Progress (3rd Year)',
+    details: 'Focusing on Software Engineering, Data Structures & Algorithms, Web Technologies, Database Systems, and Cloud Architectures.',
   },
   {
     school: 'Taxila Central College, Horana',
-    degree: 'G.C.E. Advanced Level - Science for Technology (A), Engineering Technology (B), ICT (B)',
+    partner: '',
+    degree: 'G.C.E. Advanced Level (Technology Stream)',
     period: '2020 - 2023',
+    status: 'Completed',
+    details: 'Science for Technology (A), Engineering Technology (B), Information & Communication Technology (B).',
+  },
+]
+
+export const certifications = [
+  {
+    name: 'AWS Technical Essentials',
+    issuer: 'Amazon Web Services',
+    type: 'Cloud',
+  },
+  {
+    name: 'Cybersecurity with Cloud Computing',
+    issuer: 'Cisco Networking Academy',
+    type: 'Security',
+  },
+  {
+    name: 'Laravel Essential Training',
+    issuer: 'LinkedIn Learning',
+    type: 'Backend',
+  },
+  {
+    name: 'Java Object-Oriented Programming',
+    issuer: 'LinkedIn Learning',
+    type: 'Software Eng',
+  },
+  {
+    name: 'Java Essential Training: Syntax & Structure',
+    issuer: 'LinkedIn Learning',
+    type: 'Core Lang',
+  },
+]
+
+export const hackathons = [
+  {
+    name: 'IEEEXtreme 18.0 & 19.0 Programming Competition',
+    year: '2024 / 2025',
+    org: 'IEEE Global',
+    type: 'Competitive Programming',
+  },
+  {
+    name: 'UOW Problem Solving International Hackathon',
+    year: '2025',
+    org: 'University of Westminster',
+    type: 'Algorithmic Problem Solving',
+  },
+  {
+    name: "Hacksphere '25 | IEEEXtreme Competition",
+    year: '2025',
+    org: 'IEEE Student Branch',
+    type: 'Hackathon',
+  },
+  {
+    name: 'CodeRally 6.0 (Advanced Tier)',
+    year: '2024',
+    org: 'IEEE Computer Society Chapter of IIT',
+    type: 'Coding Contest',
   },
 ]
 
 export const extraQualifications = {
   educations: [
-    'Diploma in IT (DITEC), ESOFT Metro Campus, hosted by Pearson College London',
-    'Arduino Course, University of Ruhuna, conducted by IEEE',
+    'Diploma in IT (DITEC), ESOFT Metro Campus, Pearson Assured',
+    'Arduino & IoT Hardware Systems, University of Ruhuna, conducted by IEEE',
   ],
   memberships: [
-    'Member, IEEE Student Branch, Informatics Institute of Technology',
-    'Member, IEEE Computer Society, Informatics Institute of Technology',
+    'Active Member, IEEE Student Branch, Informatics Institute of Technology',
+    'Active Member, IEEE Computer Society, Informatics Institute of Technology',
   ],
 }
 
-export const certifications = [
-  'Laravel Essential Training - LinkedIn Learning',
-  'Java Object-Oriented Programming - LinkedIn Learning',
-  'AWS Technical Essentials - Amazon Web Services',
-  'Cybersecurity with Cloud Computing - Cisco Networking Academy',
-  'Java Essential Training: Syntax and Structure - LinkedIn Learning',
-]
-
-export const hackathons = [
-  'IEEEXtreme 18.0 Programming Competition - 2024',
-  'UOW Problem Solving International Hackathon - 2025',
-  "Hacksphere '25 | IEEEXtreme 19.0 Programming Competition - 2025",
-  'CodeRally 6.0 (Advanced Tier) - IEEE Computer Society Branch Chapter of IIT',
-]
