@@ -46,8 +46,15 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    document.documentElement.classList.toggle('light', theme === 'light')
-    document.documentElement.style.colorScheme = theme
+    const root = document.documentElement
+    if (theme === 'light') {
+      root.classList.add('light')
+      root.classList.remove('dark')
+    } else {
+      root.classList.add('dark')
+      root.classList.remove('light')
+    }
+    root.style.colorScheme = theme
     localStorage.setItem('theme', theme)
   }, [theme])
 
