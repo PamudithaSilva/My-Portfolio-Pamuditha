@@ -35,10 +35,10 @@ function App() {
 
       {/* Skip to Content for Accessibility */}
       <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[100] btn-primary text-xs"
+        href="#hero"
+        className="fixed -top-24 left-6 z-[100] rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 px-4 py-2.5 font-mono text-xs font-bold text-slate-950 shadow-2xl transition-all duration-300 focus:top-6 focus:outline-none focus:ring-2 focus:ring-cyan-300"
       >
-        Skip to content
+        Skip to content →
       </a>
 
       {/* Navigation */}
