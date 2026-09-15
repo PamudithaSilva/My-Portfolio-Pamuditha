@@ -221,35 +221,40 @@ html.light body {
 html.light .ambient-background {
   background-color: #f8fafc;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
-    linear-gradient(rgba(100, 116, 139, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 116, 139, 0.06) 1px, transparent 1px);
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.09) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.07) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
   background-size: auto, auto, auto, 40px 40px, 40px 40px;
 }
 
 html.light .ambient-orb-1 {
-  background: radial-gradient(circle, rgba(147, 197, 253, 0.4) 0%, rgba(165, 243, 252, 0.2) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(147, 197, 253, 0.35) 0%, rgba(165, 243, 252, 0.15) 50%, transparent 70%);
 }
 
 html.light .ambient-orb-2 {
-  background: radial-gradient(circle, rgba(196, 181, 253, 0.35) 0%, rgba(147, 197, 253, 0.2) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(196, 181, 253, 0.3) 0%, rgba(147, 197, 253, 0.15) 50%, transparent 70%);
 }
 
 html.light .glass-card,
 html.light .surface {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(226, 232, 240, 0.9);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
 }
 
 html.light .glass-card:hover {
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 0 16px 36px -5px rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.45);
+  box-shadow: 0 16px 36px -5px rgba(6, 182, 212, 0.12);
 }
 
+/* Typography & Text */
 html.light .text-white {
+  color: #0f172a;
+}
+
+html.light .text-slate-100 {
   color: #0f172a;
 }
 
@@ -269,39 +274,7 @@ html.light .text-slate-500 {
   color: #94a3b8;
 }
 
-html.light .border-white\/\[0\.08\],
-html.light .border-white\/10,
-html.light .border-white\/15 {
-  border-color: rgba(226, 232, 240, 0.9);
-}
-
-html.light .bg-white\/\[0\.04\],
-html.light .bg-white\/\[0\.05\],
-html.light .bg-white\/\[0\.08\] {
-  background-color: rgba(241, 245, 249, 0.8);
-}
-
-html.light .chip {
-  background-color: #f1f5f9;
-  border-color: #e2e8f0;
-  color: #334155;
-}
-
-html.light .chip:hover {
-  background-color: #e2e8f0;
-  border-color: #06b6d4;
-  color: #0891b2;
-}
-
-html.light .btn-outline {
-  border-color: #cbd5e1;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #1e293b;
-}
-
-html.light .btn-outline:hover {
-  border-color: #06b6d4;
-  background-color: #ffffff;
+html.light .eyebrow {
   color: #0284c7;
 }
 
@@ -311,12 +284,143 @@ html.light .gradient-text {
   -webkit-text-fill-color: transparent;
 }
 
+/* Borders & Backgrounds in light mode */
+html.light .border-white\/\[0\.04\],
+html.light .border-white\/\[0\.06\],
+html.light .border-white\/\[0\.07\],
+html.light .border-white\/\[0\.08\],
+html.light .border-white\/\[0\.1\],
+html.light .border-white\/10,
+html.light .border-white\/15 {
+  border-color: #e2e8f0;
+}
+
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/\[0\.05\],
+html.light .bg-white\/\[0\.06\],
+html.light .bg-white\/\[0\.07\],
+html.light .bg-white\/\[0\.08\] {
+  background-color: #f1f5f9;
+}
+
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-950\/60,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/85,
+html.light .bg-\[\#080c14\]\/80,
+html.light .bg-\[\#080c14\]\/30,
+html.light .bg-\[\#0f172a\]\/70 {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: #e2e8f0;
+}
+
+/* Badges & Highlights */
+html.light .bg-cyan-950\/40,
+html.light .bg-cyan-950\/50,
+html.light .bg-cyan-950\/60 {
+  background-color: #ecfeff;
+  border-color: #a5f3fc;
+  color: #0891b2;
+}
+
+html.light .bg-amber-950\/40 {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+}
+
+html.light .bg-emerald-950\/40 {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+/* Nav & Mobile Menu */
+html.light nav {
+  background-color: rgba(255, 255, 255, 0.88);
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
 html.light .nav-link-active {
   color: #0284c7;
 }
 
 html.light .content-rule {
-  border-color: rgba(226, 232, 240, 0.8);
+  border-color: rgba(226, 232, 240, 0.85);
+}
+
+/* Chips, Buttons, Controls */
+html.light .chip {
+  background-color: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #334155;
+}
+
+html.light .chip:hover {
+  background-color: #e0f2fe;
+  border-color: #38bdf8;
+  color: #0284c7;
+}
+
+html.light .theme-toggle {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  color: #334155;
+}
+
+html.light .theme-toggle:hover {
+  background-color: #f8fafc;
+  border-color: #38bdf8;
+  color: #0284c7;
+}
+
+html.light .btn-outline {
+  border-color: #cbd5e1;
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+html.light .btn-outline:hover {
+  border-color: #06b6d4;
+  background-color: #f8fafc;
+  color: #0284c7;
+}
+
+/* Inputs & Form */
+html.light input,
+html.light textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus {
+  border-color: #06b6d4 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15) !important;
+}
+
+/* Footer */
+html.light footer {
+  background-color: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+/* Selection */
+html.light ::selection {
+  background: rgba(6, 182, 212, 0.25);
+  color: #0f172a;
 }
 
 /* Custom Scrollbar */
