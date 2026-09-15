@@ -12,7 +12,7 @@ export const profile = {
     'I am a third-year Computer Science student at the University of Westminster who designs and builds high-performance, secure web applications. My experience spans responsive React and TypeScript frontends, robust Node.js services, scalable REST APIs, cloud-ready architectures, and generative AI integrations with Stripe and Google Gemini.',
   stats: [
     { label: 'Degree Track', value: 'BSc (Hons) CS' },
-    { label: 'Completed Projects', value: '4+ Builds' },
+    { label: 'Completed Projects', value: '5+ Builds' },
     { label: 'Tech Stack', value: '15+ Tools' },
     { label: 'Hackathons', value: '4 Contests' },
   ],
@@ -85,6 +85,21 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'shop-erp-system',
+    title: 'Shop ERP System',
+    subtitle: 'Enterprise Resource Planning & Procurement Platform',
+    period: 'Jul 2026 - Sep 2026',
+    category: 'fullstack',
+    featured: true,
+    highlight: 'Full-lifecycle inventory reconciliation, RBAC auth, interactive BI dashboard & CI/CD',
+    description:
+      'A full-stack enterprise resource planning platform engineered to streamline retail operations, stock movements, procurement lifecycles, and business analytics. Features end-to-end type safety, role-based access control (Admin & Staff), stock-aware POS sales/refund deduction, interactive analytics with Recharts, and automated CI/CD workflows.',
+    tags: ['React 19', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'JWT', 'GitHub Actions'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/PamudithaSilva/shop-erp-system', type: 'github' },
+    ],
+  },
   {
     id: 'gemellery',
     title: 'Gemellery',
