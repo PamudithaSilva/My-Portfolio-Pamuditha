@@ -1,34 +1,38 @@
 import { motion } from 'framer-motion'
 import { profile } from '../data'
-import { FiCode, FiCpu, FiDatabase, FiLayers, FiShield, FiZap } from 'react-icons/fi'
+import { FiCode, FiCpu, FiDatabase, FiLayers, FiShield, FiTrendingUp } from 'react-icons/fi'
 
 const capabilities = [
   {
     icon: <FiCode className="text-xl text-blue-400" />,
-    gradient: 'from-blue-500/20 to-cyan-500/5',
-    borderHover: 'hover:border-blue-500/40',
+    gradient: 'from-blue-500/25 to-cyan-500/10',
+    borderHover: 'hover:border-blue-500/50 hover:shadow-blue-500/15',
     title: 'Full-Stack Web Engineering',
+    tag: 'Frontend & Architecture',
     text: 'Building performant single-page apps and server-rendered architectures with React, TypeScript, Node.js, and modern CSS.',
   },
   {
     icon: <FiCpu className="text-xl text-cyan-400" />,
-    gradient: 'from-cyan-500/20 to-teal-500/5',
-    borderHover: 'hover:border-cyan-500/40',
+    gradient: 'from-cyan-500/25 to-teal-500/10',
+    borderHover: 'hover:border-cyan-500/50 hover:shadow-cyan-500/15',
     title: 'Generative AI Integrations',
+    tag: 'LLM & Workflows',
     text: 'Integrating state-of-the-art LLMs (like Google Gemini API) for conversational agents, real-time contextual recommendations, and automated flows.',
   },
   {
     icon: <FiDatabase className="text-xl text-violet-400" />,
-    gradient: 'from-violet-500/20 to-purple-500/5',
-    borderHover: 'hover:border-violet-500/40',
+    gradient: 'from-violet-500/25 to-purple-500/10',
+    borderHover: 'hover:border-violet-500/50 hover:shadow-violet-500/15',
     title: 'Robust REST APIs & Cloud DBs',
+    tag: 'Backend & Data',
     text: 'Designing resilient RESTful microservices with Java JAX-RS and Express, paired with MongoDB, MySQL, and PostgreSQL.',
   },
   {
     icon: <FiShield className="text-xl text-emerald-400" />,
-    gradient: 'from-emerald-500/20 to-green-500/5',
-    borderHover: 'hover:border-emerald-500/40',
+    gradient: 'from-emerald-500/25 to-green-500/10',
+    borderHover: 'hover:border-emerald-500/50 hover:shadow-emerald-500/15',
     title: 'Secure & Reliable Architecture',
+    tag: 'Security & Payments',
     text: 'Applying cloud security principles, rigorous error boundary handling, and secure third-party payment gateways like Stripe.',
   },
 ]
@@ -67,14 +71,19 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`glass-card relative flex flex-col justify-between p-6 transition-all duration-300 hover:-translate-y-1.5 ${cap.borderHover}`}
+            className={`glass-card relative flex flex-col justify-between p-6 transition-all duration-300 hover:-translate-y-1.5 shadow-lg ${cap.borderHover}`}
           >
             {/* Top Glowing Orb in Card */}
-            <div className={`absolute top-0 right-0 h-28 w-28 rounded-full bg-gradient-to-br ${cap.gradient} blur-2xl pointer-events-none`} />
+            <div className={`absolute top-0 right-0 h-32 w-32 rounded-full bg-gradient-to-br ${cap.gradient} blur-2xl pointer-events-none`} />
 
             <div>
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-md shadow-md">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] backdrop-blur-md shadow-md">
                 {cap.icon}
+              </div>
+              <div className="mb-2">
+                <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950/40 border border-cyan-500/20 px-2 py-0.5 rounded">
+                  {cap.tag}
+                </span>
               </div>
               <h3 className="mb-2.5 text-base font-bold text-white tracking-tight">
                 {cap.title}

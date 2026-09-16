@@ -34,7 +34,7 @@ export default function Contact() {
       setSubmitted(true)
       setFormData({ name: '', email: '', message: '' })
       setTimeout(() => setSubmitted(false), 5000)
-    }, 700)
+    }, 600)
   }
 
   return (
@@ -71,10 +71,10 @@ export default function Contact() {
           className="space-y-4"
         >
           {/* Email Quick Action Card */}
-          <div className="glass-card p-6 transition-all hover:border-cyan-500/30">
+          <div className="glass-card p-6 transition-all hover:border-cyan-500/40 hover:shadow-xl">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-3.5">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xl">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xl shadow-sm">
                   <FiMail />
                 </div>
                 <div>
@@ -92,7 +92,7 @@ export default function Contact() {
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/10 hover:text-cyan-300"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/10 hover:text-cyan-300 active:scale-95"
                 aria-label="Copy email address"
               >
                 {copied ? <FiCheck className="text-emerald-400" /> : <FiCopy />}
@@ -110,9 +110,9 @@ export default function Contact() {
           </div>
 
           {/* Phone Card */}
-          <div className="glass-card p-6 transition-all hover:border-cyan-500/30">
+          <div className="glass-card p-6 transition-all hover:border-cyan-500/40 hover:shadow-xl">
             <div className="flex items-center gap-3.5">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xl">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xl shadow-sm">
                 <FiPhone />
               </div>
               <div>
@@ -130,9 +130,9 @@ export default function Contact() {
           </div>
 
           {/* Location Card */}
-          <div className="glass-card p-6 transition-all hover:border-cyan-500/30">
+          <div className="glass-card p-6 transition-all hover:border-cyan-500/40 hover:shadow-xl">
             <div className="flex items-center gap-3.5">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 text-xl">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 text-xl shadow-sm">
                 <FiMapPin />
               </div>
               <div>
@@ -150,7 +150,7 @@ export default function Contact() {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="glass-card flex items-center justify-center gap-2 p-4 text-xs font-semibold text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-white/[0.06] hover:text-white"
+              className="glass-card flex items-center justify-center gap-2 p-4 text-xs font-semibold text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-white/[0.06] hover:text-white hover:shadow-lg"
             >
               <FiGithub className="text-base" /> GitHub Profile
             </a>
@@ -158,7 +158,7 @@ export default function Contact() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="glass-card flex items-center justify-center gap-2 p-4 text-xs font-semibold text-slate-300 transition-all hover:border-blue-400/40 hover:bg-white/[0.06] hover:text-white"
+              className="glass-card flex items-center justify-center gap-2 p-4 text-xs font-semibold text-slate-300 transition-all hover:border-blue-400/40 hover:bg-white/[0.06] hover:text-white hover:shadow-lg"
             >
               <FiLinkedin className="text-base text-blue-400" /> LinkedIn
             </a>
@@ -171,15 +171,15 @@ export default function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6 }}
-          className="glass-card relative overflow-hidden p-6 sm:p-8"
+          className="glass-card relative overflow-hidden p-6 sm:p-8 border border-white/15"
         >
-          <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 h-44 w-44 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none" />
 
           <h3 className="text-lg font-bold text-white tracking-tight mb-2">
             Send a direct message
           </h3>
           <p className="text-xs text-slate-400 mb-6 font-mono">
-            Fill out the details and I will reply within 24 hours.
+            Fill out the details below and I will respond promptly.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -232,7 +232,7 @@ export default function Contact() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Hi Pamuditha, I would love to connect regarding..."
+                placeholder="Hi Pamuditha, I would like to connect regarding..."
                 className="w-full rounded-xl border border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-colors focus:border-cyan-400 focus:bg-slate-900 focus:outline-none resize-none"
               />
             </div>
@@ -258,9 +258,9 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3 text-center text-xs font-medium text-emerald-300"
+                  className="rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3 text-center text-xs font-medium text-emerald-300 shadow-lg"
                 >
-                  🎉 Thank you! Your message has been prepared. I will be in touch soon!
+                  🎉 Thank you! Your message has been received. I will be in touch soon!
                 </motion.div>
               )}
             </AnimatePresence>
