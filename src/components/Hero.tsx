@@ -1,5 +1,16 @@
 import { motion } from 'framer-motion'
-import { FiArrowDownRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiMapPin, FiTerminal } from 'react-icons/fi'
+import {
+  FiArrowDownRight,
+  FiCode,
+  FiCpu,
+  FiDownload,
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiMapPin,
+  FiServer,
+  FiTerminal,
+} from 'react-icons/fi'
 import { profile } from '../data'
 import profileImg from '../assets/profile.jpg'
 
@@ -42,11 +53,11 @@ export default function Hero() {
             {/* Status Beacon */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 px-3.5 py-1.5 backdrop-blur-md shadow-sm shadow-cyan-500/10 mb-6"
+              className="inline-flex items-center gap-2.5 rounded-full border border-cyan-500/30 bg-cyan-950/50 px-3.5 py-1.5 backdrop-blur-md shadow-sm shadow-cyan-500/10 mb-6"
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300">
                 {profile.status}
@@ -56,7 +67,7 @@ export default function Hero() {
             {/* Main Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl"
+              className="font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-6xl"
             >
               Crafting reliable,{' '}
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
@@ -70,19 +81,18 @@ export default function Hero() {
               className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg"
             >
               Hi, I&apos;m <span className="font-semibold text-white">{profile.name}</span> — a Computer Science
-              undergraduate at the University of Westminster &amp; full-stack engineer. I turn complex ideas into clean, secure web applications, AI integrations, and high-performance APIs.
+              undergraduate at the University of Westminster &amp; full-stack engineer. I turn complex problems into clean, resilient web applications, AI integrations, and high-performance APIs.
             </motion.p>
 
             {/* Location & Quick Meta */}
             <motion.div
               variants={itemVariants}
-              className="mt-4 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400"
+              className="mt-4 flex flex-wrap items-center gap-3.5 text-xs font-mono text-slate-400"
             >
-              <span className="inline-flex items-center gap-1.5 text-cyan-400/90">
+              <span className="inline-flex items-center gap-1.5 text-cyan-400/90 bg-cyan-950/30 border border-cyan-500/20 px-2.5 py-1 rounded-lg">
                 <FiMapPin className="text-sm" /> {profile.location}
               </span>
-              <span className="h-1 w-1 rounded-full bg-slate-600" />
-              <span className="inline-flex items-center gap-1.5 text-slate-300">
+              <span className="inline-flex items-center gap-1.5 text-slate-300 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-lg">
                 <FiTerminal className="text-sm text-blue-400" /> React • Node.js • Java • AI
               </span>
             </motion.div>
@@ -140,7 +150,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: High-End Glassmorphism Profile Frame & Quick Stats */}
+          {/* Right Column: High-End Glassmorphism Profile Frame & Floating Badges */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -148,10 +158,10 @@ export default function Hero() {
             className="relative mx-auto w-full max-w-md lg:ml-auto"
           >
             {/* Glowing Accent Backdrop */}
-            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-600/30 via-cyan-500/30 to-violet-600/30 blur-xl opacity-70" />
+            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-600/30 via-cyan-500/30 to-violet-600/30 blur-2xl opacity-75" />
 
-            {/* Profile Card */}
-            <div className="relative glass-card overflow-hidden p-3.5 border border-white/15 bg-slate-900/80 backdrop-blur-2xl">
+            {/* Profile Card Frame */}
+            <div className="relative glass-card overflow-hidden p-3.5 border border-white/15 bg-slate-900/85 backdrop-blur-2xl shadow-2xl">
               {/* Top Accent Gradient Header */}
               <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-cyan-500/20 via-blue-500/10 to-transparent pointer-events-none" />
 
@@ -162,17 +172,39 @@ export default function Hero() {
                   alt={`Portrait of ${profile.name}`}
                   className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
+
+                {/* Floating Tech Pill Top Left */}
+                <motion.div
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="absolute top-3 left-3 hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-slate-950/80 px-2.5 py-1 backdrop-blur-md shadow-lg"
+                >
+                  <FiCode className="text-cyan-400 text-xs" />
+                  <span className="font-mono text-[0.68rem] font-semibold text-white">Full-Stack</span>
+                </motion.div>
+
+                {/* Floating Tech Pill Top Right */}
+                <motion.div
+                  initial={{ opacity: 0, x: 15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6, duration: 0.5 }}
+                  className="absolute top-3 right-3 hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-slate-950/80 px-2.5 py-1 backdrop-blur-md shadow-lg"
+                >
+                  <FiCpu className="text-violet-400 text-xs" />
+                  <span className="font-mono text-[0.68rem] font-semibold text-white">AI &amp; APIs</span>
+                </motion.div>
                 
                 {/* Floating Bottom Card Over Image */}
                 <div className="absolute inset-x-3.5 bottom-3.5 rounded-xl border border-white/15 bg-slate-950/85 p-3.5 backdrop-blur-xl shadow-2xl">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-widest text-cyan-400">
-                        Specialization
+                        Focus Area
                       </p>
                       <p className="mt-0.5 text-sm font-bold text-white">Full-Stack &amp; AI Systems</p>
                     </div>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-300 font-mono text-xs font-bold border border-cyan-500/30">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 text-cyan-300 font-mono text-xs font-bold border border-cyan-500/30">
                       PS
                     </div>
                   </div>
@@ -185,7 +217,7 @@ export default function Hero() {
               {profile.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="glass-card p-3.5 border border-white/[0.07] transition-all hover:border-cyan-500/30 hover:bg-white/[0.04]"
+                  className="glass-card p-3.5 border border-white/[0.08] transition-all hover:border-cyan-500/40 hover:bg-white/[0.04]"
                 >
                   <p className="text-base font-bold text-white tracking-tight">{stat.value}</p>
                   <p className="font-mono text-[0.7rem] text-slate-400 mt-0.5">{stat.label}</p>

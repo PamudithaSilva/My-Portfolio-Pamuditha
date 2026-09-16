@@ -1,13 +1,14 @@
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { HiMenu, HiMoon, HiSun, HiX } from 'react-icons/hi'
-import { FiArrowUpRight, FiCode } from 'react-icons/fi'
+import { FiArrowUpRight, FiCode, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
+import { profile } from '../data'
 
 const links = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Work', href: '#projects' },
-  { label: 'Background', href: '#education' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -28,9 +29,9 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 25)
+      setScrolled(window.scrollY > 20)
       const sections = ['hero', 'about', 'skills', 'projects', 'education', 'contact']
-      const scrollPos = window.scrollY + 180
+      const scrollPos = window.scrollY + 200
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i])
@@ -68,39 +69,39 @@ export default function Navbar() {
     <>
       {/* Top Scroll Progress Line */}
       <motion.div
-        className="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-blue-500 via-cyan-400 to-violet-500"
+        className="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-blue-500 via-cyan-400 to-violet-500 shadow-[0_0_12px_rgba(6,182,212,0.6)]"
         style={{ scaleX }}
       />
 
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled ? 'py-3.5 sm:py-4' : 'py-5 sm:py-6'
+          scrolled ? 'py-3' : 'py-5'
         }`}
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <nav
             className={`flex items-center justify-between rounded-2xl px-4 py-2.5 sm:px-5 sm:py-3 transition-all duration-300 ${
               scrolled
-                ? 'border border-white/[0.1] bg-[#080c14]/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.25)]'
-                : 'border border-white/[0.04] bg-[#080c14]/30 backdrop-blur-md'
+                ? 'border border-white/[0.12] bg-[#080c14]/85 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.35)]'
+                : 'border border-white/[0.05] bg-[#080c14]/40 backdrop-blur-md'
             }`}
           >
             {/* Logo */}
             <a
               href="#hero"
-              className="group flex items-center gap-2 font-display text-base font-bold tracking-tight text-white transition-opacity hover:opacity-90"
+              className="group flex items-center gap-2.5 font-display text-base font-bold tracking-tight text-white transition-opacity hover:opacity-90"
               aria-label="Pamuditha Silva Portfolio Home"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 text-slate-950 font-mono text-sm font-black shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 text-slate-950 font-mono text-sm font-black shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform">
                 <FiCode className="stroke-[3]" />
               </div>
-              <span className="text-slate-100 tracking-tight">
+              <span className="text-slate-100 tracking-tight font-display font-bold">
                 PAMUDITHA<span className="text-cyan-400">.</span>
               </span>
             </a>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden items-center gap-1 text-sm font-medium text-slate-400 md:flex">
+            <ul className="hidden items-center gap-1 text-sm font-medium text-slate-300 md:flex">
               {links.map((link) => {
                 const isActive = active === link.href
                 return (
@@ -109,7 +110,7 @@ export default function Navbar() {
                       href={link.href}
                       aria-current={isActive ? 'page' : undefined}
                       className={`relative z-10 block px-3.5 py-1.5 transition-colors duration-200 ${
-                        isActive ? 'text-white' : 'hover:text-slate-200'
+                        isActive ? 'text-cyan-300 font-semibold' : 'text-slate-300 hover:text-white'
                       }`}
                     >
                       {link.label}
@@ -117,7 +118,7 @@ export default function Navbar() {
                     {isActive && (
                       <motion.div
                         layoutId="active-pill"
-                        className="absolute inset-0 rounded-lg bg-white/[0.08] border border-white/[0.1] shadow-inner"
+                        className="absolute inset-0 rounded-xl bg-cyan-500/10 border border-cyan-500/30 shadow-inner"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -137,9 +138,9 @@ export default function Navbar() {
               >
                 <motion.div
                   key={theme}
-                  initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                  initial={{ rotate: -90, scale: 0.6, opacity: 0 }}
                   animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                  exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                  exit={{ rotate: 90, scale: 0.6, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
                   {theme === 'dark' ? <HiSun className="text-amber-300" /> : <HiMoon className="text-blue-500" />}
@@ -149,7 +150,7 @@ export default function Navbar() {
               {/* Let's Talk CTA */}
               <a
                 href="#contact"
-                className="btn-primary !px-4 !py-2 hidden md:inline-flex text-xs uppercase tracking-wider font-semibold"
+                className="btn-primary !px-4 !py-2 hidden md:inline-flex text-xs uppercase tracking-wider font-semibold shine-effect"
               >
                 Let&apos;s talk <FiArrowUpRight className="text-base" />
               </a>
@@ -180,7 +181,7 @@ export default function Navbar() {
               className="absolute inset-x-0 top-full mt-2 px-4 md:hidden"
             >
               <div className="mx-auto max-w-6xl">
-                <div className="glass-card overflow-hidden p-3 shadow-2xl backdrop-blur-2xl">
+                <div className="glass-card overflow-hidden p-4 shadow-2xl backdrop-blur-2xl border border-white/15">
                   <ul id="mobile-navigation" className="space-y-1">
                     {links.map((link) => {
                       const isActive = active === link.href
@@ -191,7 +192,7 @@ export default function Navbar() {
                             onClick={() => setOpen(false)}
                             className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-all ${
                               isActive
-                                ? 'bg-gradient-to-r from-cyan-500/15 to-blue-500/15 border-l-2 border-cyan-400 text-cyan-300'
+                                ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-l-2 border-cyan-400 text-cyan-300 font-semibold'
                                 : 'text-slate-300 hover:bg-white/[0.06] hover:text-white'
                             }`}
                           >
@@ -202,7 +203,33 @@ export default function Navbar() {
                       )
                     })}
                   </ul>
-                  <div className="mt-3 border-t border-white/[0.08] pt-3 px-1">
+
+                  {/* Mobile Socials & CTA */}
+                  <div className="mt-4 border-t border-white/[0.08] pt-4">
+                    <div className="flex items-center justify-around mb-3 text-slate-300">
+                      <a
+                        href={profile.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1.5 text-xs font-mono hover:text-cyan-300"
+                      >
+                        <FiGithub className="text-sm" /> GitHub
+                      </a>
+                      <a
+                        href={profile.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1.5 text-xs font-mono hover:text-blue-300"
+                      >
+                        <FiLinkedin className="text-sm text-blue-400" /> LinkedIn
+                      </a>
+                      <a
+                        href={`mailto:${profile.email}`}
+                        className="flex items-center gap-1.5 text-xs font-mono hover:text-cyan-300"
+                      >
+                        <FiMail className="text-sm" /> Email
+                      </a>
+                    </div>
                     <a
                       href="#contact"
                       onClick={() => setOpen(false)}
