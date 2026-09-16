@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiArrowUpRight, FiCode, FiExternalLink, FiFolder, FiGithub, FiStar } from 'react-icons/fi'
+import { FiArrowUpRight, FiExternalLink, FiFolder, FiGithub, FiStar } from 'react-icons/fi'
 import { projects, ProjectCategory } from '../data'
 
 const categories: { id: ProjectCategory; label: string }[] = [
@@ -21,7 +21,7 @@ export default function Projects() {
   return (
     <section id="projects" className="section-container content-rule">
       {/* Header */}
-      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-10">
+      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,12 +32,12 @@ export default function Projects() {
             <FiFolder className="text-sm" /> Portfolio
           </span>
           <h2 className="section-title">
-            Featured <span className="gradient-text">creations.</span>
+            Featured <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">creations.</span>
           </h2>
         </motion.div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 rounded-2xl border border-white/[0.08] bg-slate-900/60 p-1.5 backdrop-blur-xl">
+        <div className="flex flex-wrap items-center gap-1.5 rounded-2xl border border-white/[0.08] bg-slate-900/70 p-1.5 backdrop-blur-xl">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id
             return (
@@ -53,7 +53,7 @@ export default function Projects() {
                 {isActive && (
                   <motion.div
                     layoutId="active-project-filter"
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/80 to-cyan-600/80 shadow-md shadow-cyan-500/20"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 shadow-md shadow-cyan-500/25"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -75,7 +75,7 @@ export default function Projects() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
               whileHover={{ y: -6 }}
-              className="glass-card group relative flex flex-col justify-between p-6 sm:p-8 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-2xl hover:shadow-cyan-500/10"
+              className="glass-card group relative flex flex-col justify-between p-6 sm:p-8 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-2xl hover:shadow-cyan-500/15"
             >
               {/* Card Header */}
               <div>
@@ -97,7 +97,7 @@ export default function Projects() {
                         href={l.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-sm text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/10 hover:text-cyan-300"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-sm text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/10 hover:text-cyan-300 hover:scale-105"
                         aria-label={`${l.label} for ${p.title}`}
                       >
                         {l.type === 'github' ? <FiGithub /> : <FiExternalLink />}
@@ -110,12 +110,12 @@ export default function Projects() {
                 <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
                   {p.title}
                 </h3>
-                <p className="mt-0.5 text-xs font-mono text-slate-400 mb-3.5">
+                <p className="mt-1 text-xs font-mono text-cyan-400/80 mb-3.5">
                   {p.subtitle}
                 </p>
 
                 {/* Highlight banner */}
-                <div className="mb-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 text-xs text-slate-300">
+                <div className="mb-4 rounded-xl border border-cyan-500/20 bg-cyan-950/20 p-3 text-xs text-slate-300">
                   <span className="font-semibold text-cyan-300">Key Highlight: </span>
                   {p.highlight}
                 </div>
@@ -132,7 +132,7 @@ export default function Projects() {
                   {p.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md border border-white/[0.06] bg-slate-900/90 px-2.5 py-1 font-mono text-[0.7rem] text-slate-300 transition-colors group-hover:border-white/15"
+                      className="rounded-md border border-white/[0.06] bg-slate-900/90 px-2.5 py-1 font-mono text-[0.7rem] text-slate-300 transition-colors group-hover:border-cyan-500/20"
                     >
                       {tag}
                     </span>
