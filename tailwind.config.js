@@ -8,7 +8,7 @@ export default {
         dark: {
           bg: '#080c14',
           surface: '#0f172a',
-          card: 'rgba(17, 27, 46, 0.7)',
+          card: 'rgba(15, 23, 42, 0.75)',
           border: 'rgba(255, 255, 255, 0.08)',
         },
         brand: {
@@ -30,11 +30,12 @@ export default {
         mono: ['"JetBrains Mono"', 'SFMono-Regular', 'Consolas', 'monospace'],
       },
       boxShadow: {
-        'glow-cyan': '0 0 30px -5px rgba(6, 182, 212, 0.25)',
-        'glow-blue': '0 0 30px -5px rgba(59, 130, 246, 0.25)',
-        'glow-violet': '0 0 30px -5px rgba(139, 92, 246, 0.25)',
+        'glow-cyan': '0 0 35px -5px rgba(6, 182, 212, 0.3)',
+        'glow-blue': '0 0 35px -5px rgba(59, 130, 246, 0.3)',
+        'glow-violet': '0 0 35px -5px rgba(139, 92, 246, 0.3)',
         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        'glass-hover': '0 12px 40px 0 rgba(6, 182, 212, 0.15)',
+        'glass-hover': '0 16px 48px 0 rgba(6, 182, 212, 0.16)',
+        'card-glow': '0 0 0 1px rgba(255, 255, 255, 0.08), 0 10px 30px -10px rgba(0,0,0,0.5)',
       },
       animation: {
         'gradient-move': 'gradientMove 10s ease infinite',
@@ -51,11 +52,11 @@ export default {
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-12px)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
         pulseGlow: {
           '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+          '50%': { opacity: '0.8', transform: 'scale(1.04)' },
         },
         shimmer: {
           '0%': { transform: 'translateX(-100%)' },
