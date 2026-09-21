@@ -122,17 +122,47 @@
     background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent);
   }
 
-  /* Glass Card Styles */
+  /* Glass Card Styles & Glows */
   .glass-card {
-    @apply relative rounded-2xl border border-white/[0.09] bg-slate-900/65 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.28)] transition-all duration-300;
+    @apply relative rounded-2xl border border-white/[0.09] bg-slate-900/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.28)] transition-all duration-300;
   }
 
   .glass-card:hover {
-    @apply border-white/[0.2] shadow-[0_16px_45px_rgba(6,182,212,0.14)];
+    @apply border-cyan-400/30 shadow-[0_16px_45px_rgba(6,182,212,0.16)];
   }
 
   .glass-card-interactive {
-    @apply glass-card hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_20px_45px_rgba(6,182,212,0.15)] cursor-pointer;
+    @apply glass-card hover:-translate-y-1.5 hover:border-cyan-400/50 hover:shadow-[0_20px_45px_rgba(6,182,212,0.2)] cursor-pointer;
+  }
+
+  .glass-panel {
+    @apply rounded-2xl border border-white/10 bg-slate-950/60 backdrop-blur-2xl shadow-2xl;
+  }
+
+  /* Animated Glowing Border Card */
+  .card-glow-animated {
+    position: relative;
+    border-radius: 1rem;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(16px);
+  }
+
+  .card-glow-animated::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .card-glow-animated:hover::before {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.8), rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.8));
   }
 
   .surface {
@@ -155,12 +185,27 @@
     @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent;
   }
 
+  .shimmer-text {
+    background: linear-gradient(90deg, #ffffff 0%, #a5f3fc 45%, #ffffff 50%, #e0e7ff 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer-text 5s linear infinite;
+  }
+
+  @keyframes shimmer-text {
+    to {
+      background-position: 200% center;
+    }
+  }
+
   .btn-primary {
     @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 bg-[length:200%_auto] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:bg-[position:right_center] hover:-translate-y-0.5 hover:shadow-cyan-500/35 active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/50 hover:bg-white/[0.08] hover:text-white hover:shadow-lg hover:shadow-cyan-500/10 active:translate-y-0 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/50 hover:bg-white/[0.08] hover:text-white hover:shadow-lg hover:shadow-cyan-500/15 active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-ghost {
@@ -172,7 +217,7 @@
   }
 
   .theme-toggle {
-    @apply inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-lg text-slate-300 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.1] hover:text-cyan-300 hover:scale-105 active:scale-95;
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-lg text-slate-300 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.1] hover:text-cyan-300 hover:scale-105 active:scale-95 shadow-sm;
   }
 
   .nav-link-active {
@@ -198,7 +243,7 @@
     background: linear-gradient(
       60deg,
       transparent 30%,
-      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.2) 50%,
       transparent 70%
     );
     transform: rotate(30deg);
