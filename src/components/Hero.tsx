@@ -158,10 +158,10 @@ export default function Hero() {
             className="relative mx-auto w-full max-w-md lg:ml-auto"
           >
             {/* Glowing Accent Backdrop */}
-            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-600/30 via-cyan-500/30 to-violet-600/30 blur-2xl opacity-75" />
+            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-600/30 via-cyan-500/30 to-violet-600/30 blur-2xl opacity-75 animate-pulse-glow" />
 
             {/* Profile Card Frame */}
-            <div className="relative glass-card overflow-hidden p-3.5 border border-white/15 bg-slate-900/85 backdrop-blur-2xl shadow-2xl">
+            <div className="relative glass-card overflow-hidden p-3.5 border border-white/15 bg-slate-900/85 backdrop-blur-2xl shadow-2xl card-glow-animated">
               {/* Top Accent Gradient Header */}
               <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-cyan-500/20 via-blue-500/10 to-transparent pointer-events-none" />
 
@@ -175,9 +175,8 @@ export default function Hero() {
 
                 {/* Floating Tech Pill Top Left */}
                 <motion.div
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                   className="absolute top-3 left-3 hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-slate-950/80 px-2.5 py-1 backdrop-blur-md shadow-lg"
                 >
                   <FiCode className="text-cyan-400 text-xs" />
@@ -186,9 +185,8 @@ export default function Hero() {
 
                 {/* Floating Tech Pill Top Right */}
                 <motion.div
-                  initial={{ opacity: 0, x: 15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6, duration: 0.5 }}
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                   className="absolute top-3 right-3 hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-slate-950/80 px-2.5 py-1 backdrop-blur-md shadow-lg"
                 >
                   <FiCpu className="text-violet-400 text-xs" />
@@ -196,7 +194,7 @@ export default function Hero() {
                 </motion.div>
                 
                 {/* Floating Bottom Card Over Image */}
-                <div className="absolute inset-x-3.5 bottom-3.5 rounded-xl border border-white/15 bg-slate-950/85 p-3.5 backdrop-blur-xl shadow-2xl">
+                <div className="absolute inset-x-3.5 bottom-3.5 rounded-xl border border-white/15 bg-slate-950/90 p-3.5 backdrop-blur-xl shadow-2xl">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-widest text-cyan-400">
@@ -204,7 +202,7 @@ export default function Hero() {
                       </p>
                       <p className="mt-0.5 text-sm font-bold text-white">Full-Stack &amp; AI Systems</p>
                     </div>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 text-cyan-300 font-mono text-xs font-bold border border-cyan-500/30">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 text-cyan-300 font-mono text-xs font-bold border border-cyan-500/30 shadow-inner">
                       PS
                     </div>
                   </div>
@@ -217,7 +215,7 @@ export default function Hero() {
               {profile.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="glass-card p-3.5 border border-white/[0.08] transition-all hover:border-cyan-500/40 hover:bg-white/[0.04]"
+                  className="glass-card p-3.5 border border-white/[0.08] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 hover:bg-white/[0.05] hover:shadow-lg hover:shadow-cyan-500/10"
                 >
                   <p className="text-base font-bold text-white tracking-tight">{stat.value}</p>
                   <p className="font-mono text-[0.7rem] text-slate-400 mt-0.5">{stat.label}</p>
