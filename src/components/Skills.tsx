@@ -118,15 +118,15 @@ export default function Skills() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="glass-card flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10"
+              className="glass-card card-glow-animated flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/15"
             >
-              <div>
-                <div className="mb-5 flex items-center justify-between border-b border-white/[0.07] pb-3.5">
+              <div className="relative z-10">
+                <div className="mb-5 flex items-center justify-between border-b border-white/[0.08] pb-3.5">
                   <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-cyan-400">
                     {cat.name}
                   </h3>
-                  <span className="rounded-full bg-cyan-950/40 border border-cyan-500/20 px-2.5 py-0.5 font-mono text-[0.68rem] text-cyan-300">
-                    {cat.skills.length} skills
+                  <span className="rounded-full bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 font-mono text-[0.68rem] text-cyan-300 shadow-sm">
+                    {cat.skills.length} tools
                   </span>
                 </div>
 
@@ -139,11 +139,11 @@ export default function Skills() {
                     return (
                       <motion.div
                         key={s.name}
-                        whileHover={{ y: -3, scale: 1.03 }}
+                        whileHover={{ y: -3, scale: 1.04 }}
                         transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                        className="group flex items-center gap-2 rounded-xl border border-white/[0.08] bg-slate-900/85 px-3.5 py-2 backdrop-blur-md transition-all duration-200 hover:border-cyan-400/40 hover:bg-white/[0.08] hover:shadow-md hover:shadow-cyan-500/15"
+                        className="group flex items-center gap-2 rounded-xl border border-white/[0.08] bg-slate-900/90 px-3.5 py-2 backdrop-blur-md transition-all duration-200 hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:shadow-md hover:shadow-cyan-500/20 cursor-default"
                       >
-                        <span className={`text-base transition-transform group-hover:scale-110 ${meta.color}`}>
+                        <span className={`text-base transition-transform duration-200 group-hover:scale-115 ${meta.color}`}>
                           {meta.icon}
                         </span>
                         <span className="font-mono text-xs font-medium text-slate-200 group-hover:text-white">

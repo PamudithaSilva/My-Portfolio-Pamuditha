@@ -71,33 +71,36 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`glass-card relative flex flex-col justify-between p-6 transition-all duration-300 hover:-translate-y-1.5 shadow-lg ${cap.borderHover}`}
+            className={`glass-card card-glow-animated relative flex flex-col justify-between p-6 transition-all duration-300 hover:-translate-y-2 shadow-xl ${cap.borderHover}`}
           >
             {/* Top Glowing Orb in Card */}
             <div className={`absolute top-0 right-0 h-32 w-32 rounded-full bg-gradient-to-br ${cap.gradient} blur-2xl pointer-events-none`} />
 
-            <div>
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] backdrop-blur-md shadow-md">
+            <div className="relative z-10">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08] backdrop-blur-md shadow-lg">
                 {cap.icon}
               </div>
-              <div className="mb-2">
-                <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950/40 border border-cyan-500/20 px-2 py-0.5 rounded">
+              <div className="mb-2.5">
+                <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-1 rounded-md shadow-sm">
                   {cap.tag}
                 </span>
               </div>
-              <h3 className="mb-2.5 text-base font-bold text-white tracking-tight">
+              <h3 className="mb-2.5 text-base font-bold text-white tracking-tight leading-snug">
                 {cap.title}
               </h3>
-              <p className="text-xs leading-relaxed text-slate-400 sm:text-sm">
+              <p className="text-xs leading-relaxed text-slate-300 sm:text-sm">
                 {cap.text}
               </p>
             </div>
 
-            <div className="mt-6 flex items-center gap-2 border-t border-white/[0.06] pt-4">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-              <span className="font-mono text-[0.7rem] uppercase tracking-wider text-slate-400">
-                Core Capability
-              </span>
+            <div className="mt-6 flex items-center justify-between border-t border-white/[0.08] pt-4 relative z-10">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+                <span className="font-mono text-[0.7rem] uppercase tracking-wider text-slate-400 font-semibold">
+                  Engineering Pillar
+                </span>
+              </div>
+              <span className="font-mono text-[0.7rem] text-cyan-400/80 font-bold">0{i + 1}</span>
             </div>
           </motion.div>
         ))}
