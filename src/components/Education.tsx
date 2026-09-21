@@ -53,12 +53,19 @@ export default function Education() {
               onClick={() => setActiveTab(tab.id)}
               className={`relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-200 ${
                 isActive
-                  ? 'text-cyan-300 bg-cyan-950/40 border border-cyan-500/40 shadow-md shadow-cyan-500/10'
+                  ? 'text-cyan-200'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
               }`}
             >
-              <span className="text-base">{tab.icon}</span>
-              <span>{tab.label}</span>
+              <span className="relative z-10 text-base">{tab.icon}</span>
+              <span className="relative z-10">{tab.label}</span>
+              {isActive && (
+                <motion.div
+                  layoutId="active-education-tab"
+                  className="absolute inset-0 rounded-xl bg-cyan-950/60 border border-cyan-500/40 shadow-md shadow-cyan-500/15"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
             </button>
           )
         })}
@@ -77,18 +84,18 @@ export default function Education() {
               transition={{ duration: 0.3 }}
               className="space-y-6"
             >
-              {education.map((item) => (
+              {education.map((item, idx) => (
                 <div
                   key={item.school}
-                  className="glass-card relative overflow-hidden p-6 sm:p-8 transition-all hover:border-cyan-500/40 hover:shadow-xl"
+                  className="glass-card card-glow-animated relative overflow-hidden p-6 sm:p-8 transition-all hover:border-cyan-500/50 hover:shadow-xl"
                 >
-                  <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+                  <div className="relative z-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
                     <div>
-                      <div className="flex flex-wrap items-center gap-2.5 mb-2">
-                        <span className="font-mono text-xs font-semibold uppercase text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 rounded">
+                      <div className="flex flex-wrap items-center gap-2.5 mb-2.5">
+                        <span className="font-mono text-xs font-semibold uppercase text-cyan-300 bg-cyan-950/70 border border-cyan-500/30 px-2.5 py-0.5 rounded-md shadow-sm">
                           {item.period}
                         </span>
-                        <span className="font-mono text-xs text-slate-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-0.5 rounded">
+                        <span className="font-mono text-xs text-emerald-400 bg-emerald-950/50 border border-emerald-500/30 px-2.5 py-0.5 rounded-md">
                           {item.status}
                         </span>
                       </div>
@@ -102,9 +109,10 @@ export default function Education() {
                         )}
                       </p>
                     </div>
+                    <span className="font-mono text-xs text-cyan-400/80 hidden sm:block">0{idx + 1}</span>
                   </div>
 
-                  <p className="mt-4 text-xs leading-relaxed text-slate-400 sm:text-sm border-t border-white/[0.06] pt-4">
+                  <p className="relative z-10 mt-4 text-xs leading-relaxed text-slate-300 sm:text-sm border-t border-white/[0.08] pt-4">
                     {item.details}
                   </p>
                 </div>
@@ -125,13 +133,13 @@ export default function Education() {
               {certifications.map((cert) => (
                 <div
                   key={cert.name}
-                  className="glass-card flex items-start gap-4 p-5 transition-all hover:border-cyan-500/40 hover:shadow-lg"
+                  className="glass-card card-glow-animated flex items-start gap-4 p-5 transition-all hover:border-cyan-500/40 hover:shadow-lg"
                 >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xl shadow-sm">
+                  <div className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xl shadow-sm">
                     <FiAward />
                   </div>
-                  <div>
-                    <span className="font-mono text-[0.68rem] uppercase tracking-wider text-cyan-400 bg-cyan-950/40 border border-cyan-500/20 px-2 py-0.5 rounded">
+                  <div className="relative z-10">
+                    <span className="font-mono text-[0.68rem] uppercase tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded">
                       {cert.type} • {cert.issuer}
                     </span>
                     <h3 className="text-sm font-semibold text-white mt-2 leading-snug">
@@ -156,11 +164,11 @@ export default function Education() {
               {hackathons.map((hack) => (
                 <div
                   key={hack.name}
-                  className="glass-card flex flex-col justify-between p-5 transition-all hover:border-cyan-500/40 hover:shadow-lg"
+                  className="glass-card card-glow-animated flex flex-col justify-between p-5 transition-all hover:border-cyan-500/40 hover:shadow-lg"
                 >
-                  <div>
+                  <div className="relative z-10">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[0.68rem] text-cyan-400 bg-cyan-950/50 border border-cyan-500/30 px-2 py-0.5 rounded">
+                      <span className="font-mono text-[0.68rem] text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 rounded">
                         {hack.year}
                       </span>
                       <span className="font-mono text-[0.68rem] text-slate-400">
@@ -171,7 +179,7 @@ export default function Education() {
                       {hack.name}
                     </h3>
                   </div>
-                  <div className="mt-4 flex items-center gap-2 border-t border-white/[0.06] pt-3 text-xs text-slate-400 font-mono">
+                  <div className="relative z-10 mt-4 flex items-center gap-2 border-t border-white/[0.08] pt-3 text-xs text-slate-400 font-mono">
                     <FiGlobe className="text-cyan-400" />
                     <span>{hack.org}</span>
                   </div>
@@ -190,16 +198,16 @@ export default function Education() {
               transition={{ duration: 0.3 }}
               className="space-y-4"
             >
-              <div className="glass-card p-6 sm:p-8">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-cyan-400 font-mono mb-4">
+              <div className="glass-card card-glow-animated p-6 sm:p-8">
+                <h3 className="relative z-10 text-sm font-bold uppercase tracking-wider text-cyan-400 font-mono mb-4">
                   Professional Memberships &amp; Extra Diplomas
                 </h3>
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="relative z-10 grid gap-3 sm:grid-cols-2">
                   {[...extraQualifications.educations, ...extraQualifications.memberships].map(
                     (item) => (
                       <div
                         key={item}
-                        className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-slate-900/60 p-3.5 text-xs text-slate-300 transition-all hover:border-cyan-500/30 hover:bg-white/[0.04]"
+                        className="flex items-start gap-3 rounded-xl border border-white/[0.08] bg-slate-900/70 p-3.5 text-xs text-slate-300 transition-all hover:border-cyan-500/40 hover:bg-white/[0.04]"
                       >
                         <FiCheckCircle className="text-cyan-400 shrink-0 text-sm mt-0.5" />
                         <span className="leading-relaxed">{item}</span>
