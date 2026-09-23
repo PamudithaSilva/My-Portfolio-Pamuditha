@@ -24,7 +24,7 @@ import {
 } from 'react-icons/si'
 import { FaAws, FaJava } from 'react-icons/fa6'
 import { VscVscode } from 'react-icons/vsc'
-import { FiCpu, FiSearch, FiServer, FiTerminal } from 'react-icons/fi'
+import { FiCpu, FiSearch, FiServer, FiTerminal, FiX } from 'react-icons/fi'
 import React from 'react'
 
 const iconMap: Record<string, { icon: React.ReactNode; color: string }> = {
@@ -99,9 +99,10 @@ export default function Skills() {
           {searchTerm && (
             <button
               onClick={() => setSearchTerm('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-400 hover:text-white"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+              aria-label="Clear search"
             >
-              ✕
+              <FiX />
             </button>
           )}
         </div>
