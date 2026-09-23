@@ -71,7 +71,7 @@ export default function Hero() {
             >
               Crafting reliable,{' '}
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                intelligent web systems.
+                Intelligent Software Systems.
               </span>
             </motion.h1>
 
