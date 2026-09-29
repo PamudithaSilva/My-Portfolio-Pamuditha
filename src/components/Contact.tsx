@@ -18,17 +18,9 @@ import {
 } from 'react-icons/fi'
 import { profile } from '../data'
 
-const INQUIRY_TYPES = [
-  { id: 'internship', label: 'Internship / Job', desc: 'Hiring for full-time or internship' },
-  { id: 'project', label: 'Project Collaboration', desc: 'Build a product or software together' },
-  { id: 'freelance', label: 'Freelance Work', desc: 'Custom web app / API development' },
-  { id: 'chat', label: 'General Chat', desc: 'Tech discussion or networking' },
-]
-
 export default function Contact() {
   const [copied, setCopied] = useState(false)
-  const [selectedType, setSelectedType] = useState('internship')
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [localTime, setLocalTime] = useState('')
@@ -66,8 +58,8 @@ export default function Contact() {
     setTimeout(() => {
       setIsSubmitting(false)
       setSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-    }, 800)
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    }, 700)
   }
 
   return (
@@ -83,20 +75,20 @@ export default function Contact() {
         <span className="eyebrow">
           <FiZap className="text-sm text-cyan-400" /> Let&apos;s Connect
         </span>
-        <h2 className="section-title mb-4">
+        <h2 className="section-title mb-3">
           Let&apos;s build something{' '}
           <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
             extraordinary.
           </span>
         </h2>
         <p className="text-base leading-relaxed text-slate-300 sm:text-lg">
-          I&apos;m currently open to software engineering internships, graduate roles, and innovative collaborations.
-          Reach out through direct channels or drop a message below.
+          I&apos;m currently open to software engineering internships, graduate opportunities, and technical projects.
+          Feel free to reach out directly or send a message below.
         </p>
       </motion.div>
 
       <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        {/* Left Column: Presence, Status & Direct Details */}
+        {/* Left Column: Presence, Direct Channels & Status */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -104,7 +96,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="space-y-4"
         >
-          {/* Realtime Availability & Timezone Banner */}
+          {/* Availability & Timezone Banner */}
           <div className="glass-card card-glow-animated p-5 overflow-hidden">
             <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
@@ -124,26 +116,25 @@ export default function Contact() {
                 </div>
               )}
             </div>
-            <p className="relative z-10 mt-3 text-xs text-slate-400">
-              Typical response time: <span className="text-slate-200 font-medium">Within 24 hours</span>. Fast-track queries via email or LinkedIn.
+            <p className="relative z-10 mt-2.5 text-xs text-slate-400">
+              Response time: <span className="text-slate-200 font-medium">Within 24 hours</span>. For urgent inquiries, email or message directly.
             </p>
           </div>
 
-          {/* Email Card with Copy & Launch */}
-          <div className="glass-card card-glow-animated p-6 transition-all hover:border-cyan-500/50 hover:shadow-xl group">
-            <div className="relative z-10 flex items-start justify-between gap-3">
+          {/* Email Card with 1-Click Copy */}
+          <div className="glass-card card-glow-animated p-5 transition-all hover:border-cyan-500/50 hover:shadow-xl group">
+            <div className="relative z-10 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3.5 min-w-0">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xl shadow-sm group-hover:scale-105 transition-transform">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-lg shadow-sm group-hover:scale-105 transition-transform">
                   <FiMail />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-mono text-xs uppercase tracking-wider text-slate-400">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                     Email Address
                   </p>
                   <a
                     href={`mailto:${profile.email}`}
                     className="block text-sm font-semibold text-white hover:text-cyan-300 transition-colors truncate"
-                    title={profile.email}
                   >
                     {profile.email}
                   </a>
@@ -154,19 +145,19 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/15 hover:text-cyan-300 active:scale-95 shadow-sm"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/15 hover:text-cyan-300 shadow-sm"
                   aria-label="Copy email address"
                   title="Copy email to clipboard"
                 >
-                  {copied ? <FiCheck className="text-emerald-400" /> : <FiCopy />}
+                  {copied ? <FiCheck className="text-emerald-400 text-sm" /> : <FiCopy className="text-xs" />}
                 </button>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/15 hover:text-cyan-300 active:scale-95 shadow-sm"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-cyan-400/40 hover:bg-cyan-500/15 hover:text-cyan-300 shadow-sm"
                   aria-label="Open default mail client"
-                  title="Open mail client"
+                  title="Send email"
                 >
-                  <FiExternalLink />
+                  <FiExternalLink className="text-xs" />
                 </a>
               </div>
             </div>
@@ -177,10 +168,10 @@ export default function Contact() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="relative z-10 mt-2.5 overflow-hidden"
+                  className="relative z-10 mt-2"
                 >
-                  <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-500/15 px-2.5 py-1 text-xs font-mono text-emerald-400 border border-emerald-500/25">
-                    <FiCheck className="text-xs" /> Copied email to clipboard!
+                  <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-500/15 px-2 py-0.5 text-xs font-mono text-emerald-400 border border-emerald-500/25">
+                    <FiCheck className="text-xs" /> Email address copied!
                   </span>
                 </motion.div>
               )}
@@ -190,13 +181,13 @@ export default function Contact() {
           {/* Phone & Location Bento Split */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Phone Card */}
-            <div className="glass-card card-glow-animated p-5 transition-all hover:border-cyan-500/50 hover:shadow-xl group">
+            <div className="glass-card card-glow-animated p-4 transition-all hover:border-cyan-500/40 hover:shadow-lg">
               <div className="relative z-10 flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 text-lg shadow-sm group-hover:scale-105 transition-transform">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20 text-base shadow-sm">
                   <FiPhone />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">
                     Phone / WhatsApp
                   </p>
                   <a
@@ -210,13 +201,13 @@ export default function Contact() {
             </div>
 
             {/* Location Card */}
-            <div className="glass-card card-glow-animated p-5 transition-all hover:border-cyan-500/50 hover:shadow-xl group">
+            <div className="glass-card card-glow-animated p-4 transition-all hover:border-cyan-500/40 hover:shadow-lg">
               <div className="relative z-10 flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 text-lg shadow-sm group-hover:scale-105 transition-transform">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/20 text-base shadow-sm">
                   <FiMapPin />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">
                     Location
                   </p>
                   <p className="text-xs font-semibold text-white truncate">{profile.location}</p>
@@ -231,10 +222,10 @@ export default function Contact() {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="glass-card card-glow-animated flex items-center justify-between p-4 text-xs font-semibold text-slate-300 transition-all hover:border-cyan-400/50 hover:bg-white/[0.08] hover:text-white hover:shadow-lg group"
+              className="glass-card card-glow-animated flex items-center justify-between p-3.5 text-xs font-semibold text-slate-300 transition-all hover:border-cyan-400/50 hover:bg-white/[0.08] hover:text-white hover:shadow-lg group"
             >
-              <div className="relative z-10 flex items-center gap-2.5">
-                <FiGithub className="text-lg text-slate-300 group-hover:text-cyan-400 transition-colors" />
+              <div className="relative z-10 flex items-center gap-2">
+                <FiGithub className="text-base text-slate-300 group-hover:text-cyan-400 transition-colors" />
                 <span>GitHub</span>
               </div>
               <FiArrowUpRight className="relative z-10 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
@@ -244,10 +235,10 @@ export default function Contact() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="glass-card card-glow-animated flex items-center justify-between p-4 text-xs font-semibold text-slate-300 transition-all hover:border-blue-400/50 hover:bg-white/[0.08] hover:text-white hover:shadow-lg group"
+              className="glass-card card-glow-animated flex items-center justify-between p-3.5 text-xs font-semibold text-slate-300 transition-all hover:border-blue-400/50 hover:bg-white/[0.08] hover:text-white hover:shadow-lg group"
             >
-              <div className="relative z-10 flex items-center gap-2.5">
-                <FiLinkedin className="text-lg text-blue-400 group-hover:scale-110 transition-transform" />
+              <div className="relative z-10 flex items-center gap-2">
+                <FiLinkedin className="text-base text-blue-400 group-hover:scale-110 transition-transform" />
                 <span>LinkedIn</span>
               </div>
               <FiArrowUpRight className="relative z-10 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
@@ -255,24 +246,20 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Right Column: Modernized Interactive Message Form */}
+        {/* Right Column: Clean Interactive Message Form */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6 }}
-          className="glass-card card-glow-animated relative overflow-hidden p-6 sm:p-8 border border-white/15"
+          className="glass-card card-glow-animated relative overflow-hidden p-6 sm:p-7 border border-white/15"
         >
-          {/* Ambient Glows */}
-          <div className="absolute top-0 right-0 h-48 w-48 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
-
           <div className="relative z-10 mb-5">
             <h3 className="text-lg font-bold text-white tracking-tight">
               Send a Direct Message
             </h3>
             <p className="text-xs text-slate-400 font-mono mt-0.5">
-              Choose an inquiry topic & enter your details below.
+              Drop a note and I will get back to you promptly.
             </p>
           </div>
 
@@ -285,13 +272,13 @@ export default function Contact() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="relative z-10 flex flex-col items-center justify-center py-10 text-center space-y-4"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-3xl shadow-lg shadow-emerald-500/20">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-2xl shadow-lg shadow-emerald-500/20">
                   <FiCheck />
                 </div>
-                <div className="space-y-1.5 max-w-sm">
-                  <h4 className="text-base font-bold text-white">Message Sent Successfully!</h4>
+                <div className="space-y-1 max-w-sm">
+                  <h4 className="text-base font-bold text-white">Message Dispatched!</h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Thank you for reaching out! I have received your note and will get back to you promptly.
+                    Thank you for reaching out. I have received your note and will reply within 24 hours.
                   </p>
                 </div>
                 <button
@@ -299,99 +286,87 @@ export default function Contact() {
                   onClick={() => setSubmitted(false)}
                   className="btn-outline text-xs px-4 py-2 mt-2"
                 >
-                  Send Another Message
+                  Send Another Note
                 </button>
               </motion.div>
             ) : (
               <form key="contact-form" onSubmit={handleSubmit} className="relative z-10 space-y-4">
-                {/* Inquiry Type Chips */}
-                <div>
-                  <label className="block font-mono text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-                    Inquiry Reason
-                  </label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {INQUIRY_TYPES.map((type) => {
-                      const isSelected = selectedType === type.id
-                      return (
-                        <button
-                          key={type.id}
-                          type="button"
-                          onClick={() => setSelectedType(type.id)}
-                          className={`rounded-xl border px-3 py-2.5 text-left transition-all ${
-                            isSelected
-                              ? 'border-cyan-400/80 bg-cyan-500/15 text-cyan-200 shadow-md shadow-cyan-500/10'
-                              : 'border-white/10 bg-slate-950/40 text-slate-300 hover:border-white/20 hover:bg-white/[0.04]'
-                          }`}
-                        >
-                          <p className="text-xs font-semibold">{type.label}</p>
-                          <p className="text-[10px] text-slate-400 mt-0.5 truncate">{type.desc}</p>
-                        </button>
-                      )
-                    })}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  {/* Name Input */}
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block font-mono text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5"
+                    >
+                      Your Name
+                    </label>
+                    <div className="relative">
+                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <FiUser className="text-sm" />
+                      </div>
+                      <input
+                        id="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Alex Johnson"
+                        className="w-full rounded-xl border border-white/10 bg-slate-950/60 pl-10 pr-4 py-2 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email Input */}
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block font-mono text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5"
+                    >
+                      Your Email
+                    </label>
+                    <div className="relative">
+                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <FiMail className="text-sm" />
+                      </div>
+                      <input
+                        id="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="alex@example.com"
+                        className="w-full rounded-xl border border-white/10 bg-slate-950/60 pl-10 pr-4 py-2 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:outline-none"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                {/* Name Input */}
+                {/* Subject / Topic */}
                 <div>
                   <label
-                    htmlFor="name"
+                    htmlFor="subject"
                     className="block font-mono text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5"
                   >
-                    Your Name
+                    Subject
                   </label>
-                  <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
-                      <FiUser className="text-sm" />
-                    </div>
-                    <input
-                      id="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="e.g. Alex Johnson"
-                      className="w-full rounded-xl border border-white/10 bg-slate-950/60 pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:ring-1 focus:ring-cyan-400 focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Email Input */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block font-mono text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5"
-                  >
-                    Your Email
-                  </label>
-                  <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
-                      <FiMail className="text-sm" />
-                    </div>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="e.g. alex@example.com"
-                      className="w-full rounded-xl border border-white/10 bg-slate-950/60 pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:ring-1 focus:ring-cyan-400 focus:outline-none"
-                    />
-                  </div>
+                  <input
+                    id="subject"
+                    type="text"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    placeholder="Internship opportunity / Project collaboration"
+                    className="w-full rounded-xl border border-white/10 bg-slate-950/60 px-4 py-2 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:outline-none"
+                  />
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <label
-                      htmlFor="message"
-                      className="block font-mono text-xs font-semibold uppercase tracking-wider text-slate-400"
-                    >
-                      Message
-                    </label>
-                    <span className="font-mono text-[10px] text-slate-500">
-                      {formData.message.length} chars
-                    </span>
-                  </div>
+                  <label
+                    htmlFor="message"
+                    className="block font-mono text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5"
+                  >
+                    Message
+                  </label>
                   <div className="relative">
                     <div className="pointer-events-none absolute top-3 left-3.5 text-slate-400">
                       <FiMessageSquare className="text-sm" />
@@ -402,27 +377,27 @@ export default function Contact() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Hi Pamuditha, I'd like to discuss a project / opportunity..."
-                      className="w-full rounded-xl border border-white/10 bg-slate-950/60 pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:ring-1 focus:ring-cyan-400 focus:outline-none resize-none"
+                      placeholder="Hi Pamuditha, I'd like to talk about..."
+                      className="w-full rounded-xl border border-white/10 bg-slate-950/60 pl-10 pr-4 py-2 text-sm text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:outline-none resize-none"
                     />
                   </div>
                 </div>
 
-                {/* Submit Action */}
+                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full shine-effect"
+                  className="btn-primary w-full shine-effect !py-3"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                      <span>Sending message...</span>
+                      <span>Sending note...</span>
                     </span>
                   ) : (
                     <>
                       <span>Send Message</span>
-                      <FiSend className="text-base" />
+                      <FiSend className="text-sm" />
                     </>
                   )}
                 </button>
@@ -434,4 +409,5 @@ export default function Contact() {
     </section>
   )
 }
+
 

@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { education, extraQualifications, certifications, hackathons } from '../data'
+import { education, certifications, hackathons, affiliations } from '../data'
 import {
   FiAward,
   FiBookOpen,
-  FiCalendar,
   FiCheckCircle,
   FiCompass,
   FiGlobe,
@@ -12,13 +11,12 @@ import {
   FiUsers,
 } from 'react-icons/fi'
 
-type TabType = 'education' | 'certifications' | 'hackathons' | 'memberships'
+type TabType = 'education' | 'certifications' | 'hackathons'
 
 const tabs: { id: TabType; label: string; icon: React.ReactNode }[] = [
   { id: 'education', label: 'Education', icon: <FiBookOpen /> },
   { id: 'certifications', label: 'Certifications', icon: <FiAward /> },
   { id: 'hackathons', label: 'Hackathons', icon: <FiTarget /> },
-  { id: 'memberships', label: 'Affiliations', icon: <FiUsers /> },
 ]
 
 export default function Education() {
@@ -38,7 +36,10 @@ export default function Education() {
           <FiCompass className="text-sm" /> Journey &amp; Milestones
         </span>
         <h2 className="section-title">
-          Education &amp; <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">achievements.</span>
+          Education &amp;{' '}
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
+            credentials.
+          </span>
         </h2>
       </motion.div>
 
@@ -72,9 +73,9 @@ export default function Education() {
       </div>
 
       {/* Tab Panels */}
-      <div className="min-h-[320px]">
+      <div className="min-h-[300px]">
         <AnimatePresence mode="wait">
-          {/* Tab 1: Education */}
+          {/* Tab 1: Education & Affiliations */}
           {activeTab === 'education' && (
             <motion.div
               key="education"
@@ -84,39 +85,60 @@ export default function Education() {
               transition={{ duration: 0.3 }}
               className="space-y-6"
             >
-              {education.map((item, idx) => (
-                <div
-                  key={item.school}
-                  className="glass-card card-glow-animated relative overflow-hidden p-6 sm:p-8 transition-all hover:border-cyan-500/50 hover:shadow-xl"
-                >
-                  <div className="relative z-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2.5 mb-2.5">
-                        <span className="font-mono text-xs font-semibold uppercase text-cyan-300 bg-cyan-950/70 border border-cyan-500/30 px-2.5 py-0.5 rounded-md shadow-sm">
-                          {item.period}
-                        </span>
-                        <span className="font-mono text-xs text-emerald-400 bg-emerald-950/50 border border-emerald-500/30 px-2.5 py-0.5 rounded-md">
-                          {item.status}
-                        </span>
+              <div className="space-y-4">
+                {education.map((item, idx) => (
+                  <div
+                    key={item.school}
+                    className="glass-card card-glow-animated relative overflow-hidden p-6 sm:p-7 transition-all hover:border-cyan-500/40"
+                  >
+                    <div className="relative z-10 flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2.5 mb-2">
+                          <span className="font-mono text-xs font-semibold uppercase text-cyan-300 bg-cyan-950/70 border border-cyan-500/30 px-2.5 py-0.5 rounded-md shadow-sm">
+                            {item.period}
+                          </span>
+                          <span className="font-mono text-xs text-emerald-400 bg-emerald-950/50 border border-emerald-500/30 px-2.5 py-0.5 rounded-md">
+                            {item.status}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold text-white tracking-tight">
+                          {item.degree}
+                        </h3>
+                        <p className="text-sm font-medium text-slate-300 mt-0.5">
+                          {item.school}{' '}
+                          {item.partner && (
+                            <span className="text-cyan-400 font-semibold">({item.partner})</span>
+                          )}
+                        </p>
                       </div>
-                      <h3 className="text-xl font-bold text-white tracking-tight">
-                        {item.degree}
-                      </h3>
-                      <p className="text-sm font-medium text-slate-300 mt-1">
-                        {item.school}{' '}
-                        {item.partner && (
-                          <span className="text-cyan-400 font-semibold">({item.partner})</span>
-                        )}
-                      </p>
+                      <span className="font-mono text-xs text-cyan-400/80 hidden sm:block">0{idx + 1}</span>
                     </div>
-                    <span className="font-mono text-xs text-cyan-400/80 hidden sm:block">0{idx + 1}</span>
-                  </div>
 
-                  <p className="relative z-10 mt-4 text-xs leading-relaxed text-slate-300 sm:text-sm border-t border-white/[0.08] pt-4">
-                    {item.details}
-                  </p>
+                    <p className="relative z-10 mt-3.5 text-xs leading-relaxed text-slate-300 sm:text-sm border-t border-white/[0.08] pt-3.5">
+                      {item.details}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Affiliations Box */}
+              <div className="glass-card p-5 sm:p-6 border border-white/10">
+                <div className="flex items-center gap-2 mb-3.5 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                  <FiUsers className="text-base" />
+                  <span>Memberships &amp; Special Certifications</span>
                 </div>
-              ))}
+                <div className="grid gap-2.5 sm:grid-cols-2">
+                  {affiliations.map((aff) => (
+                    <div
+                      key={aff}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] bg-slate-900/60 p-3 text-xs text-slate-300"
+                    >
+                      <FiCheckCircle className="text-cyan-400 shrink-0 text-sm" />
+                      <span>{aff}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           )}
 
@@ -128,24 +150,29 @@ export default function Education() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="grid gap-4 sm:grid-cols-2"
+              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
             >
               {certifications.map((cert) => (
                 <div
                   key={cert.name}
-                  className="glass-card card-glow-animated flex items-start gap-4 p-5 transition-all hover:border-cyan-500/40 hover:shadow-lg"
+                  className="glass-card card-glow-animated flex flex-col justify-between p-5 transition-all hover:border-cyan-500/40 hover:shadow-lg"
                 >
-                  <div className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xl shadow-sm">
-                    <FiAward />
+                  <div className="relative z-10 flex items-start gap-3.5 mb-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-lg shadow-sm">
+                      <FiAward />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="font-mono text-[0.65rem] uppercase tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded">
+                        {cert.type}
+                      </span>
+                      <h3 className="text-sm font-semibold text-white mt-1.5 leading-snug">
+                        {cert.name}
+                      </h3>
+                    </div>
                   </div>
-                  <div className="relative z-10">
-                    <span className="font-mono text-[0.68rem] uppercase tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded">
-                      {cert.type} • {cert.issuer}
-                    </span>
-                    <h3 className="text-sm font-semibold text-white mt-2 leading-snug">
-                      {cert.name}
-                    </h3>
-                  </div>
+                  <p className="relative z-10 text-xs font-mono text-slate-400 border-t border-white/[0.08] pt-2.5">
+                    {cert.issuer}
+                  </p>
                 </div>
               ))}
             </motion.div>
@@ -187,39 +214,9 @@ export default function Education() {
               ))}
             </motion.div>
           )}
-
-          {/* Tab 4: Memberships */}
-          {activeTab === 'memberships' && (
-            <motion.div
-              key="memberships"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-4"
-            >
-              <div className="glass-card card-glow-animated p-6 sm:p-8">
-                <h3 className="relative z-10 text-sm font-bold uppercase tracking-wider text-cyan-400 font-mono mb-4">
-                  Professional Memberships &amp; Extra Diplomas
-                </h3>
-                <div className="relative z-10 grid gap-3 sm:grid-cols-2">
-                  {[...extraQualifications.educations, ...extraQualifications.memberships].map(
-                    (item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-3 rounded-xl border border-white/[0.08] bg-slate-900/70 p-3.5 text-xs text-slate-300 transition-all hover:border-cyan-500/40 hover:bg-white/[0.04]"
-                      >
-                        <FiCheckCircle className="text-cyan-400 shrink-0 text-sm mt-0.5" />
-                        <span className="leading-relaxed">{item}</span>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          )}
         </AnimatePresence>
       </div>
     </section>
   )
 }
+

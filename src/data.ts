@@ -5,38 +5,41 @@ export const profile = {
   location: 'Colombo, Sri Lanka',
   email: 'shalukapamuditha@gmail.com',
   phone: '+94 773635170',
-  linkedin: 'https://www.linkedin.com/in/pamuditha-silva',
+  linkedin: 'https://www.linkedin.com/in/pamuditha-silva-b78926336/',
   github: 'https://github.com/PamudithaSilva',
-  status: 'Available for Internships & Projects',
+  status: 'Open for Internships & Projects',
   about:
-    'I am a third-year Computer Science student at the University of Westminster who designs and builds high-performance, secure web applications. My experience spans responsive React and TypeScript frontends, robust Node.js services, scalable REST APIs, cloud-ready architectures, and generative AI integrations with Stripe and Google Gemini.',
+    'Third-year Computer Science undergraduate at the University of Westminster (IIT) with a strong foundation in building scalable full-stack applications, resilient REST APIs, and generative AI integrations. Passionate about crafting performant user experiences with React & TypeScript, and architecting robust backend services with Node.js and Java.',
   stats: [
-    { label: 'Degree Track', value: 'BSc (Hons) CS' },
-    { label: 'Completed Projects', value: '5+ Builds' },
-    { label: 'Tech Stack', value: '15+ Tools' },
+    { label: 'Academic Standing', value: 'BSc (Hons) CS' },
+    { label: 'Featured Builds', value: '5+ Projects' },
+    { label: 'Technologies', value: '15+ Tools' },
     { label: 'Hackathons', value: '4 Contests' },
   ],
 }
 
 export type SkillCategory = {
   name: string
+  id: string
   skills: { name: string; iconKey: string }[]
 }
 
 export const skillCategories: SkillCategory[] = [
   {
     name: 'Frontend & UI',
+    id: 'frontend',
     skills: [
       { name: 'React', iconKey: 'react' },
       { name: 'TypeScript', iconKey: 'typescript' },
       { name: 'JavaScript', iconKey: 'javascript' },
-      { name: 'HTML5', iconKey: 'html' },
       { name: 'Tailwind CSS', iconKey: 'tailwind' },
+      { name: 'HTML5 / CSS3', iconKey: 'html' },
       { name: 'Figma', iconKey: 'figma' },
     ],
   },
   {
     name: 'Backend & APIs',
+    id: 'backend',
     skills: [
       { name: 'Node.js', iconKey: 'nodejs' },
       { name: 'Express', iconKey: 'express' },
@@ -48,6 +51,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: 'Databases & Cloud',
+    id: 'database',
     skills: [
       { name: 'MongoDB', iconKey: 'mongodb' },
       { name: 'MySQL', iconKey: 'mysql' },
@@ -59,6 +63,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: 'Tools & DevOps',
+    id: 'tools',
     skills: [
       { name: 'Git & GitHub', iconKey: 'git' },
       { name: 'Postman', iconKey: 'postman' },
@@ -88,38 +93,38 @@ export const projects: Project[] = [
   {
     id: 'shop-erp-system',
     title: 'Shop ERP System',
-    subtitle: 'Enterprise Resource Planning & Procurement Platform',
+    subtitle: 'Enterprise Resource Planning & POS Management',
     period: 'Jul 2026 - Sep 2026',
     category: 'fullstack',
     featured: true,
-    highlight: 'Full-lifecycle inventory reconciliation, RBAC auth, interactive BI dashboard & CI/CD',
+    highlight: 'Full-lifecycle inventory reconciliation, RBAC authentication & analytics',
     description:
-      'A full-stack enterprise resource planning platform engineered to streamline retail operations, stock movements, procurement lifecycles, and business analytics. Features end-to-end type safety, role-based access control (Admin & Staff), stock-aware POS sales/refund deduction, interactive analytics with Recharts, and automated CI/CD workflows.',
-    tags: ['React 19', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'JWT', 'GitHub Actions'],
+      'A full-stack enterprise resource planning platform engineered to streamline retail operations, stock movements, procurement lifecycles, and business analytics. Features role-based access control (Admin & Staff), stock-aware POS sales/refund deduction, interactive analytics with Recharts, and automated CI/CD workflows.',
+    tags: ['React 19', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'JWT'],
     links: [
-      { label: 'GitHub', url: 'https://github.com/PamudithaSilva/shop-erp-system', type: 'github' },
+      { label: 'GitHub Repository', url: 'https://github.com/PamudithaSilva/shop-erp-system', type: 'github' },
     ],
   },
   {
     id: 'gemellery',
     title: 'Gemellery',
-    subtitle: 'Cloud-Deployed E-Commerce Platform',
+    subtitle: 'AI-Powered E-Commerce Storefront',
     period: 'Nov 2025 - Mar 2026',
     category: 'fullstack',
     featured: true,
-    highlight: 'Integrated Stripe Payments & Gemini AI Chatbot with realtime order tracking',
+    highlight: 'Integrated Stripe Payments & Gemini AI Chatbot with live order tracking',
     description:
-      'An AI-powered luxury jewellery storefront built with React, TypeScript, and Node.js. Features frictionless contact/shipping workflows, dynamic cart & checkout, live order-status tracking, and an integrated Gemini chatbot assistant.',
+      'An AI-powered luxury jewellery storefront built with React, TypeScript, and Node.js. Features frictionless checkout workflows, dynamic shopping cart, live order-status tracking, and an integrated Gemini chatbot assistant for customer guidance.',
     tags: ['React', 'TypeScript', 'Node.js', 'Stripe API', 'Gemini API', 'Tailwind CSS'],
     links: [
-      { label: 'GitHub', url: 'https://github.com/Gemellery/Gemellery', type: 'github' },
+      { label: 'GitHub Repository', url: 'https://github.com/Gemellery/Gemellery', type: 'github' },
       { label: 'Live Demo', url: 'https://gemellery.lk', type: 'live' },
     ],
   },
   {
     id: 'smart-campus',
     title: 'SmartCampus API',
-    subtitle: 'Sensor & Room Management REST API',
+    subtitle: 'IoT Sensor & Room Management REST Service',
     period: 'Feb 2026 - Mar 2026',
     category: 'ai-api',
     featured: true,
@@ -128,46 +133,48 @@ export const projects: Project[] = [
       'Enterprise-grade Java REST API using JAX-RS (Jersey) and Apache Tomcat for managing IoT rooms, sensors, and telemetry readings. Built with clean separation of concerns, comprehensive error boundaries, in-memory collections, and Postman testing.',
     tags: ['Java', 'JAX-RS', 'Tomcat', 'Maven', 'Postman', 'REST Architecture'],
     links: [
-      { label: 'GitHub', url: 'https://github.com/PamudithaSilva/smart-campus-api', type: 'github' },
+      { label: 'GitHub Repository', url: 'https://github.com/PamudithaSilva/smart-campus-api', type: 'github' },
     ],
   },
   {
     id: 'career-guidance',
     title: 'Career Guidance AI',
-    subtitle: 'Smart Career Advisory Chatbot',
+    subtitle: 'Intelligent Career Advisory Assistant',
     period: 'Jan 2026 - Feb 2026',
     category: 'ai-api',
     featured: false,
     highlight: 'Google Gemini generative AI integration with dynamic fallback resilience',
     description:
-      'An intelligent career advisory chatbot featuring a sleek interactive JavaScript interface and an Express microservice backend. Leverages Google Gemini API for tailored career roadmaps, structured fallback handling, and secure environment configs.',
+      'An intelligent career advisory chatbot featuring an interactive JavaScript interface and an Express microservice backend. Leverages Google Gemini API for tailored career roadmaps, structured fallback handling, and secure environment configs.',
     tags: ['JavaScript', 'Express', 'Gemini AI API', 'Node.js', 'REST'],
     links: [
-      { label: 'GitHub', url: 'https://github.com/PamudithaSilva/Carrier-guidance-chatbot', type: 'github' },
+      { label: 'GitHub Repository', url: 'https://github.com/PamudithaSilva/Carrier-guidance-chatbot', type: 'github' },
     ],
   },
   {
     id: 'traffic-analysis',
     title: 'Traffic Analysis System',
-    subtitle: 'Desktop Congestion Visualizer',
+    subtitle: 'Desktop Congestion & CSV Analytics Tool',
     period: 'Dec 2024 - Jan 2025',
     category: 'systems',
     featured: false,
     highlight: 'Data visualization tool with CSV parser & Tkinter statistical dashboard',
     description:
-      'A Python desktop tool that ingests high-volume traffic CSV data, visualizes municipal congestion bottlenecks through a Tkinter UI, and outputs statistical summaries to power data-backed urban transport planning.',
+      'A Python desktop tool that ingests municipal traffic CSV datasets, visualizes congestion bottlenecks through an interactive Tkinter UI, and outputs statistical summaries to power data-backed urban transport planning.',
     tags: ['Python', 'Tkinter', 'Data Visualization', 'CSV Analytics'],
-    links: [],
+    links: [
+      { label: 'GitHub Repository', url: 'https://github.com/PamudithaSilva', type: 'github' },
+    ],
   },
 ]
 
 export const education = [
   {
-    school: 'University of Westminster',
-    partner: 'Informatics Institute of Technology (IIT)',
+    school: 'University of Westminster (UK)',
+    partner: 'Informatics Institute of Technology (IIT), Sri Lanka',
     degree: 'BSc (Hons) Computer Science',
-    period: '2024 - 2028',
-    status: 'In Progress (3rd Year)',
+    period: '2024 - Present',
+    status: '3rd Year Undergraduate',
     details: 'Focusing on Software Engineering, Data Structures & Algorithms, Web Technologies, Database Systems, and Cloud Architectures.',
   },
   {
@@ -206,6 +213,11 @@ export const certifications = [
     issuer: 'LinkedIn Learning',
     type: 'Core Lang',
   },
+  {
+    name: 'Diploma in IT (DITEC)',
+    issuer: 'ESOFT Metro Campus (Pearson Assured)',
+    type: 'Diploma',
+  },
 ]
 
 export const hackathons = [
@@ -235,14 +247,10 @@ export const hackathons = [
   },
 ]
 
-export const extraQualifications = {
-  educations: [
-    'Diploma in IT (DITEC), ESOFT Metro Campus, Pearson Assured',
-    'Arduino & IoT Hardware Systems, University of Ruhuna, conducted by IEEE',
-  ],
-  memberships: [
-    'Active Member, IEEE Student Branch, Informatics Institute of Technology',
-    'Active Member, IEEE Computer Society, Informatics Institute of Technology',
-  ],
-}
+export const affiliations = [
+  'Active Member, IEEE Student Branch, Informatics Institute of Technology',
+  'Active Member, IEEE Computer Society, Informatics Institute of Technology',
+  'Arduino & IoT Hardware Systems Certification, University of Ruhuna / IEEE',
+]
+
 

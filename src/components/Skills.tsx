@@ -24,7 +24,7 @@ import {
 } from 'react-icons/si'
 import { FaAws, FaJava } from 'react-icons/fa6'
 import { VscVscode } from 'react-icons/vsc'
-import { FiCpu, FiSearch, FiServer, FiTerminal, FiX } from 'react-icons/fi'
+import { FiCpu, FiServer, FiTerminal } from 'react-icons/fi'
 import React from 'react'
 
 const iconMap: Record<string, { icon: React.ReactNode; color: string }> = {
@@ -54,20 +54,16 @@ const iconMap: Record<string, { icon: React.ReactNode; color: string }> = {
 }
 
 export default function Skills() {
-  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedCat, setSelectedCat] = useState<string>('all')
 
-  const filteredCategories = skillCategories
-    .map((cat) => ({
-      ...cat,
-      skills: cat.skills.filter((s) =>
-        s.name.toLowerCase().includes(searchTerm.toLowerCase())
-      ),
-    }))
-    .filter((cat) => cat.skills.length > 0)
+  const displayedCategories =
+    selectedCat === 'all'
+      ? skillCategories
+      : skillCategories.filter((c) => c.id === selectedCat)
 
   return (
     <section id="skills" className="section-container content-rule">
-      {/* Header with Search */}
+      {/* Header & Filter Controls */}
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,47 +75,69 @@ export default function Skills() {
             <FiTerminal className="text-sm" /> Technical Arsenal
           </span>
           <h2 className="section-title">
-            Technologies I use to{' '}
+            Technologies &amp;{' '}
             <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-              build solutions.
+              tools I work with.
             </span>
           </h2>
         </motion.div>
 
-        {/* Quick Search */}
-        <div className="relative w-full sm:w-64">
-          <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm" />
-          <input
-            type="text"
-            placeholder="Search tech stack..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-xl border border-white/10 bg-slate-950/60 pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 backdrop-blur-md transition-all focus:border-cyan-400 focus:bg-slate-900 focus:outline-none"
-          />
-          {searchTerm && (
-            <button
-              onClick={() => setSearchTerm('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
-              aria-label="Clear search"
-            >
-              <FiX />
-            </button>
-          )}
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap items-center gap-1.5 rounded-2xl border border-white/[0.08] bg-slate-900/70 p-1.5 backdrop-blur-xl">
+          <button
+            type="button"
+            onClick={() => setSelectedCat('all')}
+            className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
+              selectedCat === 'all' ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <span className="relative z-10">All</span>
+            {selectedCat === 'all' && (
+              <motion.div
+                layoutId="active-skill-tab"
+                className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 shadow-md shadow-cyan-500/25"
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+              />
+            )}
+          </button>
+
+          {skillCategories.map((cat) => {
+            const isActive = selectedCat === cat.id
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setSelectedCat(cat.id)}
+                className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
+                  isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <span className="relative z-10">{cat.name}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="active-skill-tab"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 shadow-md shadow-cyan-500/25"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </button>
+            )
+          })}
         </div>
       </div>
 
       {/* Grid of Categories */}
       <motion.div layout className="grid gap-6 sm:grid-cols-2">
         <AnimatePresence mode="popLayout">
-          {filteredCategories.map((cat, i) => (
+          {displayedCategories.map((cat, i) => (
             <motion.div
               layout
-              key={cat.name}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              key={cat.id}
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="glass-card card-glow-animated flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/15"
+              exit={{ opacity: 0, scale: 0.96, y: 15 }}
+              transition={{ duration: 0.35, delay: i * 0.05 }}
+              className="glass-card card-glow-animated flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10"
             >
               <div className="relative z-10">
                 <div className="mb-5 flex items-center justify-between border-b border-white/[0.08] pb-3.5">
@@ -138,19 +156,17 @@ export default function Skills() {
                       color: 'text-slate-300',
                     }
                     return (
-                      <motion.div
+                      <div
                         key={s.name}
-                        whileHover={{ y: -3, scale: 1.04 }}
-                        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                        className="group flex items-center gap-2 rounded-xl border border-white/[0.08] bg-slate-900/90 px-3.5 py-2 backdrop-blur-md transition-all duration-200 hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:shadow-md hover:shadow-cyan-500/20 cursor-default"
+                        className="group flex items-center gap-2 rounded-xl border border-white/[0.08] bg-slate-900/90 px-3.5 py-2 backdrop-blur-md transition-all duration-200 hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:scale-[1.02] cursor-default shadow-sm"
                       >
-                        <span className={`text-base transition-transform duration-200 group-hover:scale-115 ${meta.color}`}>
+                        <span className={`text-base transition-transform duration-200 group-hover:scale-110 ${meta.color}`}>
                           {meta.icon}
                         </span>
                         <span className="font-mono text-xs font-medium text-slate-200 group-hover:text-white">
                           {s.name}
                         </span>
-                      </motion.div>
+                      </div>
                     )
                   })}
                 </div>
@@ -162,3 +178,4 @@ export default function Skills() {
     </section>
   )
 }
+
