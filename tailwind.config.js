@@ -18,11 +18,6 @@ export default {
           emerald: '#10b981',
           indigo: '#6366f1',
         },
-        base: '#080c14',
-        surface: '#0f172a',
-        accent: '#3b82f6',
-        accent2: '#06b6d4',
-        accent3: '#8b5cf6',
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
