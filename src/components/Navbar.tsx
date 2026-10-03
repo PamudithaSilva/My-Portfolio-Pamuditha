@@ -150,7 +150,7 @@ export default function Navbar() {
               {/* Let's Talk CTA */}
               <a
                 href="#contact"
-                className="btn-primary !px-4 !py-2 hidden md:inline-flex text-xs uppercase tracking-wider font-semibold shine-effect"
+                className="btn-primary !hidden !px-4 !py-2 md:!inline-flex text-xs uppercase tracking-wider font-semibold shine-effect"
               >
                 Let&apos;s talk <FiArrowUpRight className="text-base" />
               </a>
