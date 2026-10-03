@@ -21,6 +21,7 @@
     scroll-behavior: smooth;
     background: var(--bg-primary);
     scrollbar-gutter: stable;
+    overflow-x: clip;
   }
 
   body {
@@ -29,7 +30,8 @@
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    width: 100%;
+    overflow-x: clip;
   }
 
   #root {
@@ -104,7 +106,7 @@
   }
 
   .section-container {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28;
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28;
   }
 
   .content-rule {
@@ -253,6 +255,17 @@
   .shine-effect:hover::after {
     opacity: 1;
     transform: rotate(30deg) translate(30%, 30%);
+  }
+}
+
+/* Small-screen safeguards for dense portfolio content. */
+@media (max-width: 374px) {
+  .section-container {
+    padding-inline: 0.875rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
   }
 }
 

@@ -62,7 +62,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
+    <section id="hero" className="relative flex min-h-[92vh] items-center overflow-hidden pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-24">
       {/* Ambient glowing background orbs */}
       <div className="ambient-orb-1 pointer-events-none" aria-hidden="true" />
       <div className="ambient-orb-2 pointer-events-none" aria-hidden="true" />
@@ -105,7 +105,7 @@ export default function Hero() {
                 <br />
                 <span className="inline-flex flex-wrap items-center gap-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-300 mt-2 font-display">
                   <span>as</span>
-                  <span className="relative inline-block text-cyan-400 min-w-[260px] sm:min-w-[320px]">
+                  <span className="relative inline-block min-w-[225px] text-cyan-400 sm:min-w-[320px]">
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={roles[currentRoleIndex]}
@@ -168,7 +168,7 @@ export default function Hero() {
             {/* Social Links & Location Bar */}
             <motion.div
               variants={itemVariants}
-              className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.08] pt-6 text-slate-400 w-full"
+              className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.08] pt-6 text-slate-400 w-full sm:mt-10"
             >
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400">

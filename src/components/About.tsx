@@ -112,7 +112,7 @@ export default function About() {
                   {pillar.icon}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <div className="mb-1.5 flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
                     <span className="font-mono text-[0.68rem] font-semibold uppercase tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded">
                       {pillar.tag}
                     </span>

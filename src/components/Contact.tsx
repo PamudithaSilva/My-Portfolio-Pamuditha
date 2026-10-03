@@ -80,7 +80,7 @@ export default function Contact() {
       >
         {/* Availability & Timezone Banner (Spans 2 columns on lg) */}
         <div className="glass-card card-glow-animated p-6 overflow-hidden md:col-span-2 lg:col-span-2 flex flex-col justify-between">
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div className="relative z-10 flex flex-col items-start gap-3 mb-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-3 w-3">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
@@ -134,7 +134,7 @@ export default function Contact() {
                 </p>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="block text-base font-semibold text-white hover:text-cyan-300 transition-colors truncate"
+                  className="block break-all text-sm font-semibold text-white transition-colors hover:text-cyan-300 sm:text-base sm:break-normal sm:truncate"
                 >
                   {profile.email}
                 </a>
@@ -209,13 +209,13 @@ export default function Contact() {
             rel="noreferrer"
             className="glass-card card-glow-animated flex items-center justify-between p-5 text-sm font-semibold text-slate-200 transition-all hover:border-cyan-400/50 hover:bg-white/[0.06] hover:text-white hover:shadow-lg group"
           >
-            <div className="relative z-10 flex items-center gap-3">
+            <div className="relative z-10 flex min-w-0 items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-xl text-slate-300 group-hover:text-cyan-400 transition-colors">
                 <FiGithub />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">GitHub Profile</p>
-                <p className="text-xs font-mono text-slate-400">Explore open source &amp; repositories</p>
+                <p className="truncate text-xs font-mono text-slate-400">Explore open source &amp; repositories</p>
               </div>
             </div>
             <FiArrowUpRight className="relative z-10 text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-base transition-all" />
@@ -227,13 +227,13 @@ export default function Contact() {
             rel="noreferrer"
             className="glass-card card-glow-animated flex items-center justify-between p-5 text-sm font-semibold text-slate-200 transition-all hover:border-blue-400/50 hover:bg-white/[0.06] hover:text-white hover:shadow-lg group"
           >
-            <div className="relative z-10 flex items-center gap-3">
+            <div className="relative z-10 flex min-w-0 items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-xl text-blue-400 group-hover:scale-110 transition-transform">
                 <FiLinkedin />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">LinkedIn Network</p>
-                <p className="text-xs font-mono text-slate-400">Professional background &amp; connections</p>
+                <p className="truncate text-xs font-mono text-slate-400">Professional background &amp; connections</p>
               </div>
             </div>
             <FiArrowUpRight className="relative z-10 text-slate-400 group-hover:text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-base transition-all" />

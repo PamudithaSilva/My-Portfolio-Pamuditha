@@ -37,7 +37,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Filter Pills with Counts */}
-        <div className="flex flex-wrap items-center gap-1.5 rounded-2xl border border-white/[0.08] bg-slate-900/70 p-1.5 backdrop-blur-xl">
+        <div className="flex w-full flex-wrap items-center gap-1.5 rounded-2xl border border-white/[0.08] bg-slate-900/70 p-1.5 backdrop-blur-xl md:w-auto">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id
             const count =
@@ -88,8 +88,8 @@ export default function Projects() {
             >
               {/* Card Header Info */}
               <div className="relative z-10">
-                <div className="mb-3.5 flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
+                <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-[0.68rem] uppercase tracking-wider text-cyan-300 bg-cyan-950/70 border border-cyan-500/30 rounded-md px-2.5 py-0.5 shadow-sm">
                       {p.period}
                     </span>
@@ -100,7 +100,7 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <span className="font-mono text-[0.65rem] uppercase tracking-widest text-slate-400">
+                  <span className="font-mono text-[0.65rem] uppercase tracking-widest text-slate-400 sm:ml-auto">
                     {p.category}
                   </span>
                 </div>
@@ -139,8 +139,8 @@ export default function Projects() {
                 </div>
 
                 {/* Direct Action Links */}
-                <div className="flex items-center justify-between border-t border-white/[0.08] pt-4">
-                  <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.08] pt-4">
+                  <div className="flex flex-wrap items-center gap-2">
                     {p.links.map((l) => (
                       <a
                         key={l.url}
