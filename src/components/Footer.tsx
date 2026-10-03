@@ -22,9 +22,7 @@ export default function Footer() {
 
           {/* Center / Copyright */}
           <div className="text-xs text-slate-400 font-mono flex items-center justify-center gap-1">
-            <span>&copy; {new Date().getFullYear()} {profile.name}. Built with</span>
-            <FiHeart className="text-cyan-400 text-xs inline" />
-            <span>&amp; React.</span>
+            <span>&copy; {new Date().getFullYear()} {profile.name}. </span>
           </div>
 
           {/* Right Back to Top */}
