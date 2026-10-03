@@ -288,17 +288,32 @@ html.light .ambient-orb-2 {
 
 html.light .glass-card,
 html.light .surface {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   border-color: rgba(226, 232, 240, 0.95);
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
 }
 
 html.light .glass-card:hover {
-  border-color: rgba(6, 182, 212, 0.45);
-  box-shadow: 0 16px 36px -5px rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 16px 36px -5px rgba(6, 182, 212, 0.14);
 }
 
-/* Typography & Text */
+html.light .card-glow-animated {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.light .card-glow-animated::before {
+  display: none;
+}
+
+html.light .card-glow-animated:hover {
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 12px 30px -4px rgba(6, 182, 212, 0.12);
+}
+
+/* Typography & Text in Light Mode */
 html.light .text-white {
   color: #0f172a;
 }
@@ -323,6 +338,32 @@ html.light .text-slate-500 {
   color: #94a3b8;
 }
 
+html.light .text-cyan-200,
+html.light .text-cyan-300,
+html.light .text-cyan-400 {
+  color: #0284c7;
+}
+
+html.light .text-blue-300,
+html.light .text-blue-400 {
+  color: #2563eb;
+}
+
+html.light .text-violet-300,
+html.light .text-violet-400 {
+  color: #7c3aed;
+}
+
+html.light .text-emerald-300,
+html.light .text-emerald-400 {
+  color: #059669;
+}
+
+html.light .text-amber-300,
+html.light .text-amber-400 {
+  color: #d97706;
+}
+
 html.light .eyebrow {
   color: #0284c7;
 }
@@ -339,8 +380,12 @@ html.light .border-white\/\[0\.06\],
 html.light .border-white\/\[0\.07\],
 html.light .border-white\/\[0\.08\],
 html.light .border-white\/\[0\.1\],
+html.light .border-white\/\[0\.12\],
+html.light .border-white\/\[0\.15\],
+html.light .border-white\/5,
 html.light .border-white\/10,
-html.light .border-white\/15 {
+html.light .border-white\/15,
+html.light .border-white\/20 {
   border-color: #e2e8f0;
 }
 
@@ -350,47 +395,75 @@ html.light .bg-white\/\[0\.04\],
 html.light .bg-white\/\[0\.05\],
 html.light .bg-white\/\[0\.06\],
 html.light .bg-white\/\[0\.07\],
-html.light .bg-white\/\[0\.08\] {
+html.light .bg-white\/\[0\.08\],
+html.light .bg-white\/5,
+html.light .bg-white\/10 {
   background-color: #f1f5f9;
 }
 
 html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/70,
 html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/85,
 html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/95,
 html.light .bg-slate-950\/60,
 html.light .bg-slate-950\/80,
 html.light .bg-slate-950\/85,
+html.light .bg-slate-950\/90,
+html.light .bg-\[\#080c14\]\/40,
 html.light .bg-\[\#080c14\]\/80,
+html.light .bg-\[\#080c14\]\/85,
+html.light .bg-\[\#080c14\]\/90,
 html.light .bg-\[\#080c14\]\/30,
-html.light .bg-\[\#0f172a\]\/70 {
-  background-color: rgba(255, 255, 255, 0.9);
+html.light .bg-\[\#0f172a\]\/70,
+html.light .bg-\[\#0f172a\]\/75 {
+  background-color: rgba(255, 255, 255, 0.92);
   border-color: #e2e8f0;
 }
 
 /* Badges & Highlights */
+html.light .bg-cyan-950\/30,
 html.light .bg-cyan-950\/40,
 html.light .bg-cyan-950\/50,
-html.light .bg-cyan-950\/60 {
+html.light .bg-cyan-950\/60,
+html.light .bg-cyan-950\/70 {
   background-color: #ecfeff;
   border-color: #a5f3fc;
   color: #0891b2;
 }
 
-html.light .bg-amber-950\/40 {
+html.light .bg-amber-950\/40,
+html.light .bg-amber-950\/60 {
   background-color: #fffbeb;
   border-color: #fde68a;
   color: #b45309;
 }
 
-html.light .bg-emerald-950\/40 {
+html.light .bg-emerald-950\/40,
+html.light .bg-emerald-950\/50 {
   background-color: #ecfdf5;
   border-color: #a7f3d0;
   color: #047857;
 }
 
+html.light .bg-blue-950\/40,
+html.light .bg-blue-950\/60 {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+html.light .bg-violet-950\/40,
+html.light .bg-violet-950\/60 {
+  background-color: #f5f3ff;
+  border-color: #ddd6fe;
+  color: #6d28d9;
+}
+
 /* Nav & Mobile Menu */
 html.light nav {
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 0.92);
   border-color: #e2e8f0;
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
 }
