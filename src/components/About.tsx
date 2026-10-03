@@ -70,10 +70,10 @@ export default function About() {
               <span className="h-2 w-2 rounded-full bg-cyan-400" />
               Developer Profile &amp; Philosophy
             </h3>
-            <p className="text-sm sm:text-base leading-relaxed text-slate-300">
+            <p className="text-sm leading-relaxed text-slate-300">
               {profile.about}
             </p>
-            <p className="text-sm leading-relaxed text-slate-400">
+            <p className="text-sm leading-relaxed text-slate-300">
               I prioritize clean architectures, maintainable codebases, and seamless user experiences. Whether developing full-lifecycle ERP systems or AI assistants, I enjoy tackling challenging algorithmic problems and translating requirements into high-value software.
             </p>
 
