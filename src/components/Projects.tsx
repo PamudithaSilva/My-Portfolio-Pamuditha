@@ -51,7 +51,7 @@ export default function Projects() {
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
                 className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
-                  isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+                  isActive ? 'light-on-accent text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-1.5">
