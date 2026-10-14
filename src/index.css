@@ -348,7 +348,7 @@ html.light .text-slate-400 {
 }
 
 html.light .text-slate-500 {
-  color: #94a3b8;
+  color: #64748b;
 }
 
 html.light .text-cyan-200,
@@ -377,6 +377,43 @@ html.light .text-amber-400 {
   color: #d97706;
 }
 
+/* Keep brand and technology accents legible against the light canvas. */
+html.light .text-yellow-400,
+html.light .text-amber-500 {
+  color: #a16207;
+}
+
+html.light .text-orange-400,
+html.light .text-orange-500 {
+  color: #c2410c;
+}
+
+html.light .text-red-400,
+html.light .text-rose-500 {
+  color: #be123c;
+}
+
+html.light .text-green-500,
+html.light .text-emerald-500 {
+  color: #047857;
+}
+
+html.light .text-sky-400,
+html.light .text-sky-500 {
+  color: #0369a1;
+}
+
+html.light .text-purple-400,
+html.light .text-indigo-400,
+html.light .text-indigo-500 {
+  color: #5b21b6;
+}
+
+html.light .text-cyan-400\/90,
+html.light .text-cyan-400\/80 {
+  color: #0e7490;
+}
+
 html.light .eyebrow {
   color: #0284c7;
 }
@@ -385,6 +422,14 @@ html.light .gradient-text {
   background: linear-gradient(135deg, #0f172a 0%, #0369a1 60%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+html.light .gradient-text-accent,
+html.light .from-cyan-400.via-blue-400.to-violet-400 {
+  --tw-gradient-from: #0e7490 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(14 116 144 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #2563eb var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-to: #6d28d9 var(--tw-gradient-to-position);
 }
 
 /* Borders & Backgrounds in light mode */
@@ -524,6 +569,26 @@ html.light .btn-outline:hover {
   border-color: #06b6d4;
   background-color: #f8fafc;
   color: #0284c7;
+}
+
+/* These controls intentionally use a saturated surface, so retain white text. */
+html.light .btn-primary,
+html.light .light-on-accent,
+html.light .light-on-accent .bg-white\/20,
+html.light .light-on-accent.text-white {
+  color: #ffffff;
+}
+
+html.light .light-on-accent .bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+html.light .hover\:text-white:hover {
+  color: #0f172a;
+}
+
+html.light .hover\:text-slate-200:hover {
+  color: #1e293b;
 }
 
 /* Inputs & Form */
