@@ -87,8 +87,10 @@ export default function Skills() {
           <button
             type="button"
             onClick={() => setSelectedCat('all')}
-            className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
-              selectedCat === 'all' ? 'light-on-accent text-white' : 'text-slate-400 hover:text-slate-200'
+            className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-all ${
+              selectedCat === 'all'
+                ? 'light-on-accent text-white'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.06]'
             }`}
           >
             <span className="relative z-10">All</span>
@@ -108,8 +110,10 @@ export default function Skills() {
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCat(cat.id)}
-                className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
-                  isActive ? 'light-on-accent text-white' : 'text-slate-400 hover:text-slate-200'
+                className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-all ${
+                  isActive
+                    ? 'light-on-accent text-white'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.06]'
                 }`}
               >
                 <span className="relative z-10">{cat.name}</span>
