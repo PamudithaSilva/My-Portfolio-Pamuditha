@@ -50,13 +50,21 @@ export default function Projects() {
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
-                  isActive ? 'light-on-accent text-white' : 'text-slate-400 hover:text-slate-200'
+                className={`group/btn relative rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-all ${
+                  isActive
+                    ? 'light-on-accent text-white'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.06]'
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-1.5">
                   {cat.label}
-                  <span className={`text-[0.65rem] px-1.5 py-0.2 rounded-full font-mono ${isActive ? 'bg-white/20 text-white' : 'bg-white/5 text-slate-400'}`}>
+                  <span
+                    className={`text-[0.65rem] px-1.5 py-0.2 rounded-full font-mono transition-colors ${
+                      isActive
+                        ? 'bg-white/20 text-white'
+                        : 'bg-white/5 text-slate-400 group-hover/btn:text-slate-200 group-hover/btn:bg-white/10'
+                    }`}
+                  >
                     {count}
                   </span>
                 </span>
@@ -147,11 +155,11 @@ export default function Projects() {
                         href={l.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-200 transition-all hover:border-cyan-400/50 hover:bg-cyan-500/15 hover:text-cyan-200 shadow-sm"
+                        className="group/link inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-200 transition-all hover:border-cyan-400/50 hover:bg-cyan-500/15 hover:text-cyan-200 shadow-sm"
                       >
-                        {l.type === 'github' ? <FiGithub className="text-sm text-cyan-400" /> : <FiExternalLink className="text-sm text-cyan-400" />}
+                        {l.type === 'github' ? <FiGithub className="text-sm text-cyan-400 transition-colors" /> : <FiExternalLink className="text-sm text-cyan-400 transition-colors" />}
                         <span>{l.label}</span>
-                        <FiArrowUpRight className="text-xs opacity-70" />
+                        <FiArrowUpRight className="text-xs opacity-70 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                       </a>
                     ))}
                   </div>
